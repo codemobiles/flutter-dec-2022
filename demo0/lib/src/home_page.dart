@@ -19,6 +19,8 @@ class _HomePageState extends State<HomePage> {
         width: double.infinity,
         color: Colors.yellow.shade100,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _buildBox("111", Colors.red),
             _buildBox("222", Colors.yellow),
@@ -31,8 +33,10 @@ class _HomePageState extends State<HomePage> {
 
   _buildBox(String title, Color color) {
     return Container(
-      child: Text(title, style: TextStyle(fontSize: 40),),
-      color: color,
-    );
+        child: Text(
+          title,
+          style: TextStyle(fontSize: 40),
+        ),
+        color: color);
   }
 }

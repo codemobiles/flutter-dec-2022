@@ -19,8 +19,8 @@ class _HomePageState extends State<HomePage> {
         width: double.infinity,
         color: Colors.yellow.shade100,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _buildBox("111", Colors.red),
             _buildBox("222", Colors.yellow),

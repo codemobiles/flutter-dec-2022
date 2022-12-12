@@ -1,3 +1,4 @@
+import 'package:demo1/src/pages/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,6 +15,13 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text('HomePage'),
         ),
-        body: Text("HomePage"));
+        body: Column(
+          children: [
+            Text("HomePage"),
+            TextButton(onPressed: (){
+              Navigator.pushNamed(context, AppRoute.login);
+            }, child: Text("Button"))
+          ],
+        ));
   }
 }

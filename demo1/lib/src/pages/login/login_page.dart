@@ -20,15 +20,23 @@ class _LoginPageState extends State<LoginPage> {
           padding: const EdgeInsets.only(top: 80.0),
           child: Column(
             children: [
-              SizedBox(
-                width: 300,
-                child: Image.asset(Asset.logoImage),
-              ),
-              Text("LoginPage"),
+              _buildHeader(),
+              _buildForm()
             ],
           ),
         ),
       ),
     );
+  }
+
+  _buildHeader() {
+    return SizedBox(
+      width: 300,
+      child: Image.asset(Asset.logoImage),
+    );
+  }
+
+  _buildForm() {
+    return Card(child: Text("Form"));
   }
 }

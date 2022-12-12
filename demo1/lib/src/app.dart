@@ -1,3 +1,4 @@
+import 'package:demo1/src/pages/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'pages/pages.dart';
 
@@ -9,6 +10,7 @@ class CMApp extends StatelessWidget {
     return MaterialApp(
       title: "CMApp",
       home: HomePage(),
+      routes: AppRoute.all,
     );
   }
 }

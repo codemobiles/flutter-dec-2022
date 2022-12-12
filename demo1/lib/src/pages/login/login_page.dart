@@ -1,7 +1,9 @@
 import 'dart:math';
 
+import 'package:demo1/src/bloc/login/login_bloc.dart';
 import 'package:demo1/src/constants/asset.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -13,7 +15,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
-  String message = "Debug:";
 
   @override
   void initState() {
@@ -48,9 +49,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _buildForm() {
-    final ramdon = Random();
-    final ramdonNumber = ramdon.nextDouble();
-
     return Card(
       margin: const EdgeInsets.only(top: 24, left: 32, right: 32),
       child: Padding(
@@ -75,13 +73,11 @@ class _LoginPageState extends State<LoginPage> {
                   labelText: 'Password',
                   icon: Icon(Icons.lock),
                 )),
-            Text(message, style: TextStyle(color: Color(0xFFFF0000)),),
-            ElevatedButton(
-                onPressed: () {
-                  message = "Debug: ${ramdonNumber}";
-                  setState(() {});
-                },
-                child: Text("Login")),
+            Text(
+              "Debug: ${context.read<LoginBloc>().state.status}",
+              style: TextStyle(color: Color(0xFFFF0000)),
+            ),
+            ElevatedButton(onPressed: () {}, child: Text("Login")),
             OutlinedButton(onPressed: () {}, child: Text("Register"))
           ],
         ),

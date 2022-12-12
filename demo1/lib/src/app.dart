@@ -10,7 +10,7 @@ class CMApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final loginBloc = BlocProvider(create: (context)=>LoginBloc());
+    final loginBloc = BlocProvider<LoginBloc>(create: (context)=>LoginBloc());
 
     return MultiBlocProvider(
       providers: [loginBloc],

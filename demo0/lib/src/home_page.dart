@@ -20,10 +20,17 @@ class _HomePageState extends State<HomePage> {
         color: Colors.yellow.shade100,
         child: Column(
           children: [
-            Container(child: Text("111"), color: Colors.red,),
+            _buildBox(),
           ],
         ),
       ),
+    );
+  }
+
+  _buildBox() {
+    return Container(
+      child: Text("111"),
+      color: Colors.red,
     );
   }
 }

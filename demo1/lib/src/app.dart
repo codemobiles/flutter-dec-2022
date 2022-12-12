@@ -9,7 +9,7 @@ class CMApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "CMApp",
-      home: HomePage(),
+      home: LoginPage(),
       routes: AppRoute.all,
     );
   }

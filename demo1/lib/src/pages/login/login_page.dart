@@ -19,10 +19,8 @@ class _LoginPageState extends State<LoginPage> {
         child: Padding(
           padding: const EdgeInsets.only(top: 80.0),
           child: Column(
-            children: [
-              _buildHeader(),
-              _buildForm()
-            ],
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [_buildHeader(), _buildForm()],
           ),
         ),
       ),
@@ -37,6 +35,9 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _buildForm() {
-    return Card(child: Text("Form"));
+    return Card(
+      margin: const EdgeInsets.only(bottom: 24, left: 32, right: 32),
+      child: Text("Form"),
+    );
   }
 }

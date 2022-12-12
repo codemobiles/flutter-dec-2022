@@ -14,15 +14,20 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: Container(
-        color: Colors.white,
-        child: Center(
-          child: Text(
-            "CodeMobiles",
-            style: TextStyle(color: Colors.black),
-          ),
+      home: _buildHome(),
+    );
+  }
+
+  _buildHome() {
+    return Container(
+      color: Colors.white,
+      child: Center(
+        child: Text(
+          "CodeMobiles",
+          style: TextStyle(color: Colors.black),
         ),
       ),
     );
+
   }
 }

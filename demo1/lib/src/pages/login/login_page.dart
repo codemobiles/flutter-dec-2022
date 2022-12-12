@@ -49,6 +49,7 @@ class _LoginPageState extends State<LoginPage> {
 
   _buildForm() {
     final ramdon = Random();
+    final ramdonNumber = ramdon.nextDouble();
 
     return Card(
       margin: const EdgeInsets.only(top: 24, left: 32, right: 32),
@@ -77,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
             Text(message, style: TextStyle(color: Color(0xFFFF0000)),),
             ElevatedButton(
                 onPressed: () {
-                  message = "Debug: ${ramdon.nextDouble()}";
+                  message = "Debug: ${ramdonNumber}";
                   setState(() {});
                 },
                 child: Text("Login")),

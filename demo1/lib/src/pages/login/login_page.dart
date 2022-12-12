@@ -11,6 +11,16 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(child: Text("LoginPage")));
+      body: Container(
+        child: Padding(
+          padding: const EdgeInsets.only(top:80.0),
+          child: Column(
+            children: [
+              Text("LoginPage"),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

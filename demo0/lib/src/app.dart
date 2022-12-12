@@ -1,3 +1,4 @@
+import 'package:demo0/src/home_page.dart';
 import 'package:flutter/material.dart';
 
 class CMApp extends StatelessWidget {
@@ -5,6 +6,9 @@ class CMApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      title: "CMApp",
+      home: HomePage(),
+    );
   }
 }

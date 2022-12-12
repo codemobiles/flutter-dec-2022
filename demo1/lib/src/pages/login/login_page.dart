@@ -12,10 +12,12 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        color: Colors.black,
         child: Padding(
           padding: const EdgeInsets.only(top:80.0),
           child: Column(
             children: [
+              Image.asset("assets/images/logo.png"),
               Text("LoginPage"),
             ],
           ),

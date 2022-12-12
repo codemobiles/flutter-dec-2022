@@ -1,5 +1,5 @@
-import 'package:demo1/src/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
+import 'pages/pages.dart';
 
 class CMApp extends StatelessWidget {
   const CMApp({Key? key}) : super(key: key);

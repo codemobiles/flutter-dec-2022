@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:demo1/src/constants/asset.dart';
 import 'package:flutter/material.dart';
 
@@ -46,6 +48,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _buildForm() {
+    final ramdon = Random();
+
     return Card(
       margin: const EdgeInsets.only(top: 24, left: 32, right: 32),
       child: Padding(
@@ -73,7 +77,8 @@ class _LoginPageState extends State<LoginPage> {
             Text(message, style: TextStyle(color: Color(0xFFFF0000)),),
             ElevatedButton(
                 onPressed: () {
-                  print("Username: ${_usernameController.text}, ${_passwordController.text}");
+                  message = "Debug: ${ramdon.nextDouble()}";
+                  setState(() {});
                 },
                 child: Text("Login")),
             OutlinedButton(onPressed: () {}, child: Text("Register"))

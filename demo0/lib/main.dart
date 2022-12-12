@@ -17,7 +17,10 @@ class MyApp extends StatelessWidget {
       home: Container(
         color: Colors.white,
         child: Center(
-          child: Text("CodeMobiles"),
+          child: Text(
+            "CodeMobiles",
+            style: TextStyle(color: Colors.black),
+          ),
         ),
       ),
     );

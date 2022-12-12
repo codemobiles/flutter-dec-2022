@@ -11,11 +11,13 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+  String message = "Debug:";
 
   @override
   void initState() {
     super.initState();
     _usernameController.text = "admin";
+    _passwordController.text = "1234";
   }
 
   @override
@@ -45,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
 
   _buildForm() {
     return Card(
-      margin: const EdgeInsets.only(bottom: 24, left: 32, right: 32),
+      margin: const EdgeInsets.only(top: 24, left: 32, right: 32),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -68,9 +70,10 @@ class _LoginPageState extends State<LoginPage> {
                   labelText: 'Password',
                   icon: Icon(Icons.lock),
                 )),
+            Text(message, style: TextStyle(color: Color(0xFFFF0000)),),
             ElevatedButton(
                 onPressed: () {
-                  print("Username: ${_usernameController.text}");
+                  print("Username: ${_usernameController.text}, ${_passwordController.text}");
                 },
                 child: Text("Login")),
             OutlinedButton(onPressed: () {}, child: Text("Register"))

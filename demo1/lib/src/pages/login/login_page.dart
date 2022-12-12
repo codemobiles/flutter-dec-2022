@@ -54,6 +54,10 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: _usernameController,
               decoration: InputDecoration(labelText: "Username"),),
+            ElevatedButton(onPressed: (){
+              print("Username: ${_usernameController.text}");
+            }, child: Text("Login")),
+            OutlinedButton(onPressed: (){}, child: Text("Register"))
           ],
         ),
       ),

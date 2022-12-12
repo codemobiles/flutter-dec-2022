@@ -52,12 +52,28 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextField(
-              controller: _usernameController,
-              decoration: InputDecoration(labelText: "Username"),),
-            ElevatedButton(onPressed: (){
-              print("Username: ${_usernameController.text}");
-            }, child: Text("Login")),
-            OutlinedButton(onPressed: (){}, child: Text("Register"))
+                controller: _usernameController,
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'codemobiles@gmail.com',
+                  labelText: 'Username',
+                  icon: Icon(Icons.email),
+                )),
+            TextField(
+                controller: _passwordController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'Enter your password',
+                  labelText: 'Password',
+                  icon: Icon(Icons.lock),
+                )),
+            ElevatedButton(
+                onPressed: () {
+                  print("Username: ${_usernameController.text}");
+                },
+                child: Text("Login")),
+            OutlinedButton(onPressed: () {}, child: Text("Register"))
           ],
         ),
       ),

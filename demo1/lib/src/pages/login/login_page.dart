@@ -9,6 +9,15 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _usernameController.text = "admin";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +46,17 @@ class _LoginPageState extends State<LoginPage> {
   _buildForm() {
     return Card(
       margin: const EdgeInsets.only(bottom: 24, left: 32, right: 32),
-      child: Text("Form"),
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            TextField(
+              controller: _usernameController,
+              decoration: InputDecoration(labelText: "Username"),),
+          ],
+        ),
+      ),
     );
   }
 }

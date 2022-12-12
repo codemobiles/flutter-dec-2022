@@ -14,6 +14,16 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("HomePage"),
       ),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        color: Colors.yellow.shade100,
+        child: Column(
+          children: [
+            Container(child: Text("111"), color: Colors.red,),
+          ],
+        ),
+      ),
     );
   }
 }

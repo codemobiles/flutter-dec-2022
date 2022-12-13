@@ -18,27 +18,7 @@ class _HomePageState extends State<HomePage> {
         body: Column(
           children: [
             Text("HomePage"),
-            TextButton(
-                onPressed: () {
-                  setState(() {});
-                },
-                child: Text("Button"))
           ],
         ));
-  }
-}
-
-class MyStatelessWidget extends StatelessWidget {
-  const MyStatelessWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: TextButton(
-        onPressed: () {
-        },
-        child: Text("1234"),
-      ),
-    );
   }
 }

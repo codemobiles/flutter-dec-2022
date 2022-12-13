@@ -24,6 +24,7 @@ class CMApp extends StatelessWidget {
         title: "CMApp",
         home: LoginPage(),
         routes: AppRoute.all,
+        navigatorKey: navigatorState,
       ),
     );
   }

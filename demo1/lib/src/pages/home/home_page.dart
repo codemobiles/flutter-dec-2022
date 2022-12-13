@@ -1,5 +1,7 @@
+import 'package:demo1/src/bloc/home/home_bloc.dart';
 import 'package:demo1/src/pages/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,10 +18,7 @@ class _HomePageState extends State<HomePage> {
         title: Text('HomePage'),
       ),
       body: Column(
-        children: [
-          Text("HomePage"),
-          BlocCounter()
-        ],
+        children: [Text("HomePage"), BlocCounter()],
       ),
     );
   }
@@ -34,10 +33,17 @@ class BlocCounter extends StatelessWidget {
       margin: EdgeInsets.all(20),
       child: Row(
         children: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.add)),
-          Text("0"),
-          IconButton(onPressed: (){}, icon: Icon(Icons.remove)),
+          IconButton(
+            onPressed: ()=>context.read<HomeBloc>().add(HomeEventAdd()),
+            icon: Icon(Icons.add),
+          ),
+          Text(context.read<HomeBloc>().state.count1.toString()),
+          IconButton(
+            onPressed: ()=>context.read<HomeBloc>().add(HomeEventRemove()),
+            icon: Icon(Icons.remove),
+          ),
         ],
-      ),);
+      ),
+    );
   }
 }

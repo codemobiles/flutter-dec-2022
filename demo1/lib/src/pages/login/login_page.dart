@@ -75,9 +75,13 @@ class _LoginPageState extends State<LoginPage> {
                   labelText: 'Password',
                   icon: Icon(Icons.lock),
                 )),
-            Text(
-              "Debug: ${context.read<LoginBloc>().state.status}",
-              style: TextStyle(color: Color(0xFFFF0000)),
+            BlocBuilder<LoginBloc, LoginState>(
+              builder: (context, state) {
+                return Text(
+                  "Debug: ${state.status}",
+                  style: TextStyle(color: Color(0xFF000000)),
+                );
+              },
             ),
             ElevatedButton(
               onPressed: () {

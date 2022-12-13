@@ -1,4 +1,5 @@
 import 'package:demo1/src/bloc/home/home_bloc.dart';
+import 'package:demo1/src/bloc/login/login_bloc.dart';
 import 'package:demo1/src/pages/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +17,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('HomePage'),
-        actions: [IconButton(onPressed: (){}, icon: Icon(Icons.logout))],
+        actions: [
+          IconButton(
+            onPressed: () => context.read<LoginBloc>().add(LoginEvent_Logout()),
+            icon: Icon(Icons.logout),
+          )
+        ],
       ),
       body: Column(
         children: [Text("HomePage"), BlocCounter()],

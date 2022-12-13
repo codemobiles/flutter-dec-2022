@@ -30,6 +30,14 @@ class BlocCounter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text("Counter"),);
+    return Container(
+      margin: EdgeInsets.all(20),
+      child: Row(
+        children: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.add)),
+          Text("0"),
+          IconButton(onPressed: (){}, icon: Icon(Icons.remove)),
+        ],
+      ),);
   }
 }

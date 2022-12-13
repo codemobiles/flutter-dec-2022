@@ -43,7 +43,6 @@ class CMApp extends StatelessWidget {
         }
         
         final token = snapshot.data!.getString(AppSetting.token) ?? "";
-
         return token.isEmpty ? LoginPage() : HomePage();
       },
     );

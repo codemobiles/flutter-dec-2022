@@ -1,9 +1,13 @@
+import 'dart:convert';
+
+import 'package:demo1/src/models/product.dart';
 import 'package:dio/dio.dart';
 
 class ApiService {
   feed() async {
     final _dio = Dio();
     final result = await _dio.get("http://192.168.0.178:1150/products");
-    print(result.data);
+    final products = productFromJson(jsonEncode(result.data));
+    print(products[2].name);
   }
 }

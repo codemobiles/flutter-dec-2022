@@ -1,6 +1,7 @@
 import 'package:demo1/src/bloc/home/home_bloc.dart';
 import 'package:demo1/src/bloc/login/login_bloc.dart';
 import 'package:demo1/src/pages/app_routes.dart';
+import 'package:demo1/src/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,6 +13,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    ApiService().feed();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -41,9 +41,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginEvent_Logout>((event, emit) async {
       final prefs = await SharedPreferences.getInstance();
       prefs.clear();
-      emit(state.copyWith(status: LoginStatus.init));
       Navigator.pushReplacementNamed(navigatorState.currentContext!, AppRoute.login);
-
+      emit(state.copyWith(status: LoginStatus.init));
     });
   }
 }

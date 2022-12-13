@@ -34,10 +34,13 @@ class _HomePageState extends State<HomePage> {
       body: FutureBuilder(
         future: ApiService().feed(),
         builder: (context, snapshot) {
+          if (snapshot.hasData == false) {
+            return SizedBox();
+          }
+          final products = snapshot.data!;
           return Column(
-            children: [
-              ...[1, 2, 3, 4, 5].map((e) => Text(e.toString()))
-            ],
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [...products.map((e) => Text(e.name))],
           );
         },
       ),

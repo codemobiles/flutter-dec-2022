@@ -30,6 +30,6 @@ class BlocCounter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text("1234"),);
+    return Container(child: Text("Counter"),);
   }
 }

@@ -19,9 +19,26 @@ class _HomePageState extends State<HomePage> {
           children: [
             Text("HomePage"),
             TextButton(onPressed: (){
-              Navigator.pushNamed(context, AppRoute.login);
+              setState(() {
+
+              });
             }, child: Text("Button"))
           ],
         ));
   }
 }
+
+
+
+
+class MyStatelessWidget extends StatelessWidget {
+  const MyStatelessWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+
+

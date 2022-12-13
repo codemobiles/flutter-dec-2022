@@ -25,7 +25,9 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Column(
-        children: [Text("HomePage"), BlocCounter()],
+        children: [
+          ...[1,2,3,4,5].map((e) => Text(e.toString()))
+        ],
       ),
     );
   }

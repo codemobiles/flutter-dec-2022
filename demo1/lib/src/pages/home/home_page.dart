@@ -12,13 +12,24 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('HomePage'),
-        ),
-        body: Column(
-          children: [
-            Text("HomePage"),
-          ],
-        ));
+      appBar: AppBar(
+        title: Text('HomePage'),
+      ),
+      body: Column(
+        children: [
+          Text("HomePage"),
+          BlocCounter()
+        ],
+      ),
+    );
+  }
+}
+
+class BlocCounter extends StatelessWidget {
+  const BlocCounter({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(child: Text("1234"),);
   }
 }

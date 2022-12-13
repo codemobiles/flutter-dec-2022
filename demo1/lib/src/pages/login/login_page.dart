@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:demo1/src/bloc/login/login_bloc.dart';
 import 'package:demo1/src/constants/asset.dart';
+import 'package:demo1/src/models/user.dart';
 import 'package:demo1/src/pages/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -79,7 +80,10 @@ class _LoginPageState extends State<LoginPage> {
               style: TextStyle(color: Color(0xFFFF0000)),
             ),
             ElevatedButton(
-              onPressed: () => Navigator.pushNamed(context, AppRoute.home),
+              onPressed: () {
+                final user = User(_usernameController.text, _passwordController.text);
+                context.read<LoginBloc>().add(LoginEvent_Login(user));
+              },
               child: Text("Login"),
             ),
             OutlinedButton(onPressed: () {}, child: Text("Register"))

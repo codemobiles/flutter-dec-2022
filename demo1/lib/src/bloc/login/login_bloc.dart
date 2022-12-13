@@ -30,7 +30,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       }else{
         emit(state.copyWith(status: LoginStatus.failed));
       }
-
     });
 
     // Register

@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'pages/pages.dart';
 
+final navigatorState = GlobalKey<NavigatorState>();
+
+
 class CMApp extends StatelessWidget {
   const CMApp({Key? key}) : super(key: key);
 

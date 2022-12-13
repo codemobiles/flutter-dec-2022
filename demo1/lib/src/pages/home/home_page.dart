@@ -31,10 +31,15 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          ...[1,2,3,4,5].map((e) => Text(e.toString()))
-        ],
+      body: FutureBuilder(
+        future: ApiService().feed(),
+        builder: (context, snapshot) {
+          return Column(
+            children: [
+              ...[1, 2, 3, 4, 5].map((e) => Text(e.toString()))
+            ],
+          );
+        },
       ),
     );
   }

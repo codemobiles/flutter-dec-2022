@@ -16,6 +16,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('HomePage'),
+        actions: [IconButton(onPressed: (){}, icon: Icon(Icons.logout))],
       ),
       body: Column(
         children: [Text("HomePage"), BlocCounter()],

@@ -48,6 +48,10 @@ class BlocCounter extends StatelessWidget {
             onPressed: () => context.read<HomeBloc>().add(HomeEventRemove()),
             icon: Icon(Icons.remove),
           ),
+          IconButton(
+            onPressed: () => context.read<HomeBloc>().add(HomeEventReset()),
+            icon: Icon(Icons.delete),
+          ),
         ],
       ),
     );

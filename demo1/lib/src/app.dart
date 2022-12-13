@@ -1,4 +1,4 @@
-import 'package:demo1/src/bloc/home_bloc.dart';
+import 'package:demo1/src/bloc/home/home_bloc.dart';
 import 'package:demo1/src/bloc/login/login_bloc.dart';
 import 'package:demo1/src/pages/app_routes.dart';
 import 'package:flutter/material.dart';

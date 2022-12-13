@@ -38,6 +38,8 @@ class BlocCounter extends StatelessWidget {
             icon: Icon(Icons.add),
           ),
           Text(context.read<HomeBloc>().state.count1.toString()),
+          SizedBox( width: 20),
+          Text(context.read<HomeBloc>().state.count1.toString()),
           IconButton(
             onPressed: ()=>context.read<HomeBloc>().add(HomeEventRemove()),
             icon: Icon(Icons.remove),

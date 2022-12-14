@@ -61,7 +61,10 @@ class _HomePageState extends State<HomePage> {
         mainAxisSpacing: 1,
         childAspectRatio: 0.9, // set height ratio -  (itemWidth / itemHeight)
       ),
-      itemBuilder: (context, index) => Text(products[index].name),
+      itemBuilder: (context, index) => Container(
+        color: Colors.yellow,
+        child: Center(child: Text(products[index].name)),
+      ),
     );
   }
 

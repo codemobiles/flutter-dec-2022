@@ -12,6 +12,7 @@ class ProductForm extends StatelessWidget {
       child: Form(
         key: formState,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextFormField(
               initialValue: "ProductA",
@@ -33,7 +34,8 @@ class ProductForm extends StatelessWidget {
               onSaved: (value) {
                 print("Stock: " + (value ?? ""));
               },
-            )
+            ),
+            ElevatedButton(onPressed: (){}, child: Text("Submit"))
           ],
         ),
       ),

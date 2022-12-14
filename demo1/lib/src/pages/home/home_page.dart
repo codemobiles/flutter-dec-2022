@@ -48,6 +48,18 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  _buildGridView(List<Product> products) {
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 1,
+        mainAxisSpacing: 1,
+        childAspectRatio: 0.9, // set height ratio -  (itemWidth / itemHeight)
+      ),
+      itemBuilder: (context, index) => Text(products[index].name),
+    );
+  }
+
   _buildDemoFutureBuilder() {
     return FutureBuilder(
       future: ApiService().feed(),

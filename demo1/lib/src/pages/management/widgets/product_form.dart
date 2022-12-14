@@ -35,7 +35,9 @@ class ProductForm extends StatelessWidget {
                 print("Stock: " + (value ?? ""));
               },
             ),
-            ElevatedButton(onPressed: (){}, child: Text("Submit"))
+            ElevatedButton(onPressed: (){
+              formState.currentState?.save();
+            }, child: Text("Submit"))
           ],
         ),
       ),

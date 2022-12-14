@@ -1,3 +1,4 @@
+import 'package:demo1/src/app.dart';
 import 'package:demo1/src/bloc/home/home_bloc.dart';
 import 'package:demo1/src/bloc/login/login_bloc.dart';
 import 'package:demo1/src/constants/network_api.dart';
@@ -8,7 +9,6 @@ import 'package:demo1/src/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(child: Center(child: Text("Menu"))),
+      drawer: CustomDrawer(),
       appBar: AppBar(
         title: Text('HomePage'),
         actions: [
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
         height: 350,
         child: ProductItem(
           product: products[index],
-          onTap: () =>_navigatorManagementPage(products[index]),
+          onTap: () => _navigatorManagementPage(products[index]),
           isGrid: false,
         ),
       ),
@@ -75,18 +75,17 @@ class _HomePageState extends State<HomePage> {
       ),
       itemBuilder: (context, index) => ProductItem(
         product: products[index],
-        onTap: () =>_navigatorManagementPage(products[index]),
+        onTap: () => _navigatorManagementPage(products[index]),
         isGrid: true,
       ),
     );
   }
 
-  void  _navigatorManagementPage(Product? product) {
+  void _navigatorManagementPage(Product? product) {
     Navigator.pushNamed(context, AppRoute.management, arguments: product).then((value) {
       context.read<HomeBloc>().add(HomeEvent_Fetch());
     });
   }
-
 
   _buildDemoFutureBuilder() {
     return FutureBuilder(
@@ -139,7 +138,6 @@ class BlocCounter extends StatelessWidget {
   }
 }
 
-
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
     Key? key,
@@ -174,12 +172,35 @@ class CustomDrawer extends StatelessWidget {
     // );
   }
 
+  _showDemoDialog() {
+    showDialog(
+        context: navigatorState.currentContext!,
+        builder: (context) {
+          return Container(
+            color: Colors.white,
+            child: Column(
+              children: [
+                Text("My Dialog"),
+                TextButton(onPressed: (){
+                  Navigator.pop(context);
+                }, child: Text("Close"))
+              ],
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: Column(
         children: [
           _buildProfile(),
+          ListTile(
+            leading: Icon(Icons.add),
+            title: Text("Menu1"),
+            onTap: () => _showDemoDialog(),
+          ),
           ListTile(
             onTap: () => _showDialogBarcode(context),
             title: Text("BarCode"),
@@ -208,22 +229,22 @@ class CustomDrawer extends StatelessWidget {
   }
 
   UserAccountsDrawerHeader _buildProfile() => UserAccountsDrawerHeader(
-    currentAccountPicture: Container(
-      child: const CircleAvatar(
-        backgroundImage: NetworkImage('https://cdn-images-1.medium.com/max/280/1*X5PBTDQQ2Csztg3a6wofIQ@2x.png'),
-      ),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        shape: BoxShape.circle,
-      ),
-    ),
-    accountName: Text('CMDev'),
-    accountEmail: Text('support@codemobiles.com'),
-  );
+        currentAccountPicture: Container(
+          child: const CircleAvatar(
+            backgroundImage: NetworkImage('https://cdn-images-1.medium.com/max/280/1*X5PBTDQQ2Csztg3a6wofIQ@2x.png'),
+          ),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+          ),
+        ),
+        accountName: Text('CMDev'),
+        accountEmail: Text('support@codemobiles.com'),
+      );
 
   Builder _buildLogoutButton() => Builder(
-    builder: (context) => SafeArea(
-      child: ListTile(leading: FaIcon(FontAwesomeIcons.signOutAlt), title: Text('Log out'), onTap: () => context.read<LoginBloc>().add(LoginEvent_Logout())),
-    ),
-  );
+        builder: (context) => SafeArea(
+          child: ListTile(leading: FaIcon(FontAwesomeIcons.signOutAlt), title: Text('Log out'), onTap: () => context.read<LoginBloc>().add(LoginEvent_Logout())),
+        ),
+      );
 }

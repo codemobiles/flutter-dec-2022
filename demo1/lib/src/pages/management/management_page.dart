@@ -33,8 +33,13 @@ class _ManagementPageState extends State<ManagementPage> {
                       context: context,
                       builder: (context) {
                         return SizedBox(
-                          child: Text("1234"),
-                          height: 100,
+                          child: Column(
+                            children: [
+                              ListTile(leading: Icon(Icons.camera), title: Text("xxxx")),
+                              ListTile(leading: Icon(Icons.picture_as_pdf), title: Text("yyyy")),
+                            ],
+                          ),
+                          height: 150,
                         );
                       });
                 },

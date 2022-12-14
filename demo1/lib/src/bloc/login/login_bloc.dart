@@ -17,7 +17,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(LoginState()) {
     // Login
     on<LoginEvent_Login>((event, emit) async {
-
       emit(state.copyWith(status: LoginStatus.fetching));
       // Simulate delay
       await Future.delayed(Duration(seconds: 1));
@@ -31,8 +30,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         await prefs.setString(AppSetting.username, username);
         emit(state.copyWith(status: LoginStatus.success));
         await Future.delayed(Duration(seconds: 1));
-        Navigator.pushReplacementNamed(navigatorState.currentContext!, AppRoute.home);
-      }else{
+        Navigator.pushReplacementNamed(
+            navigatorState.currentContext!, AppRoute.home);
+      } else {
         emit(state.copyWith(status: LoginStatus.failed));
       }
     });
@@ -41,7 +41,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginEvent_Logout>((event, emit) async {
       final prefs = await SharedPreferences.getInstance();
       prefs.clear();
-      Navigator.pushReplacementNamed(navigatorState.currentContext!, AppRoute.login);
+      Navigator.pushReplacementNamed(
+          navigatorState.currentContext!, AppRoute.login);
       emit(state.copyWith(status: LoginStatus.init));
     });
   }

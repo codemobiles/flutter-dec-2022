@@ -1,5 +1,6 @@
 import 'package:demo1/src/bloc/home/home_bloc.dart';
 import 'package:demo1/src/bloc/login/login_bloc.dart';
+import 'package:demo1/src/models/product.dart';
 import 'package:demo1/src/pages/app_routes.dart';
 import 'package:demo1/src/services/api_service.dart';
 import 'package:flutter/material.dart';
@@ -33,16 +34,17 @@ class _HomePageState extends State<HomePage> {
       ),
       body: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
-          return _buildListView();
+          final products = state.products;
+          return _buildListView(products);
         },
       ),
     );
   }
 
-  _buildListView() {
+  _buildListView(List<Product> products) {
     return ListView.builder(
-      itemCount: 10,
-      itemBuilder: (context, item) => Text("1234"),
+      itemCount: products.length,
+      itemBuilder: (context, index) => Text(products[index].name),
     );
   }
 

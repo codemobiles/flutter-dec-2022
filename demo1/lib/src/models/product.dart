@@ -19,13 +19,13 @@ class Product {
     this.updatedAt,
   });
 
-  final int? id;
-  final String name;
-  final String image;
-  final int stock;
-  final int price;
-  final DateTime? createdAt;
-  final DateTime? updatedAt;
+  int? id;
+  String name;
+  String image;
+  int stock;
+  int price;
+  DateTime? createdAt;
+  DateTime? updatedAt;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
     id: json["id"] == null ? null : json["id"],

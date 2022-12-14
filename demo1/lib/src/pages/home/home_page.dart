@@ -72,11 +72,18 @@ class _HomePageState extends State<HomePage> {
       ),
       itemBuilder: (context, index) => ProductItem(
         product: products[index],
-        onTap: () {},
+        onTap: () =>_navigatorManagementPage(products[index]),
         isGrid: true,
       ),
     );
   }
+
+  void  _navigatorManagementPage(Product? product) {
+    Navigator.pushNamed(context, AppRoute.management, arguments: product).then(
+          (value) => setState(() {}),
+    );
+  }
+
 
   _buildDemoFutureBuilder() {
     return FutureBuilder(

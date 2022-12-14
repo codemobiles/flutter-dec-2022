@@ -14,6 +14,7 @@ import 'package:demo1/src/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -179,21 +180,22 @@ class CustomDrawer extends StatelessWidget {
 
   _showDemoDialog() {
     showDialog(
-        barrierDismissible: false,
+        barrierDismissible: true,
         context: navigatorState.currentContext!,
         builder: (context) {
           return Dialog(
               child: Container(
-            height: 300,
+            height: 350,
             color: Colors.white,
             child: Column(
               children: [
                 Padding(
                   padding: const EdgeInsets.all(32.0),
-                  child: BarcodeWidget(
-                  barcode: Barcode.code128(),
-                  data: '12341234123412341',
-              ),
+                  child: QrImage(
+                    data: "www.codemobiles.com",
+                    version: QrVersions.auto,
+                    size: 200.0,
+                  ),
                 ),
                 TextButton(
                     onPressed: () {

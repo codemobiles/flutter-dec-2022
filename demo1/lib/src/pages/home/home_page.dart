@@ -34,6 +34,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: CustomDrawer(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _navigatorManagementPage(),
+        child: const Icon(Icons.add),
+      ),
       appBar: AppBar(
         title: Text('HomePage'),
         actions: [

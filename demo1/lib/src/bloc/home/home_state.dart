@@ -20,10 +20,16 @@ class HomeState extends Equatable {
   HomeState copyWith({
     int? count1,
     int? count2,
+    List<Product>? products,
+    FetchStatus? status,
+    bool? isGrid,
   }) {
     return HomeState(
       count1: count1 ?? this.count1,
       count2: count2 ?? this.count2,
+      products: products ?? this.products,
+      status: status ?? this.status,
+      isGrid: isGrid ?? this.isGrid,
     );
   }
 

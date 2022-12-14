@@ -16,6 +16,16 @@
 	<string>demo1</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+
+	<key>NSPhotoLibraryUsageDescription</key>
+        <string>Used to demonstrate image picker plugin</string>
+    	<key>NSCameraUsageDescription</key>
+    	<string>Used to demonstrate image picker plugin</string>
+    	<key>NSLocationAlwaysUsageDescription</key>
+    	<string>Needed to access location</string>
+    	<key>NSLocationWhenInUseUsageDescription</key>
+    	<string>Needed to access location</string>
+
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>

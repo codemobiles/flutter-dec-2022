@@ -1,8 +1,13 @@
 part of 'home_bloc.dart';
 
+enum FetchStatus { fetching, success, failed, init }
+
 class HomeState extends Equatable {
   final int count1;
   final int count2;
+  final List<Product> products;
+  final FetchStatus status;
+  final bool isGrid;
 
   const HomeState({
     this.count1 = 0,

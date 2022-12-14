@@ -9,18 +9,15 @@ class ManagementPage extends StatefulWidget {
 }
 
 class _ManagementPageState extends State<ManagementPage> {
-  @override
-  void initState() {
-    super.initState();
-
-    final Object? arguments = ModalRoute.of(context)?.settings.arguments;
-    if (arguments != null && arguments is Product) {
-
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
+
+    final Object? arguments = ModalRoute.of(context)?.settings.arguments;
+    if (arguments != null && arguments is Product) {
+      print(arguments.name);
+    }
+
     return Scaffold(
         appBar: AppBar(
           title: Text('ManagementPage'),

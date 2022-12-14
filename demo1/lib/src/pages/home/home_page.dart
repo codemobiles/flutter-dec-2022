@@ -1,3 +1,4 @@
+import 'package:barcode_widget/barcode_widget.dart';
 import 'package:demo1/src/app.dart';
 import 'package:demo1/src/bloc/home/home_bloc.dart';
 import 'package:demo1/src/bloc/login/login_bloc.dart';
@@ -187,7 +188,13 @@ class CustomDrawer extends StatelessWidget {
             color: Colors.white,
             child: Column(
               children: [
-                Text("My Dialog"),
+                Padding(
+                  padding: const EdgeInsets.all(32.0),
+                  child: BarcodeWidget(
+                  barcode: Barcode.code128(),
+                  data: '12341234123412341',
+              ),
+                ),
                 TextButton(
                     onPressed: () {
                       Navigator.pop(context);
@@ -253,7 +260,11 @@ class CustomDrawer extends StatelessWidget {
 
   Builder _buildLogoutButton() => Builder(
         builder: (context) => SafeArea(
-          child: ListTile(leading: FaIcon(FontAwesomeIcons.signOutAlt), title: Text('Log out'), onTap: () => context.read<LoginBloc>().add(LoginEvent_Logout())),
+          child: ListTile(
+            leading: FaIcon(FontAwesomeIcons.signOutAlt),
+            title: Text('Log out'),
+            onTap: () => context.read<LoginBloc>().add(LoginEvent_Logout()),
+          ),
         ),
       );
 }

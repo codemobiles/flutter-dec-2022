@@ -12,6 +12,9 @@ class HomeState extends Equatable {
   const HomeState({
     this.count1 = 0,
     this.count2 = 0,
+    this.products = const [],
+    this.status = FetchStatus.init,
+    this.isGrid = true,
   });
 
   HomeState copyWith({

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:demo1/src/models/product.dart';
 import 'package:equatable/equatable.dart';
 part 'home_event.dart';
 part 'home_state.dart';

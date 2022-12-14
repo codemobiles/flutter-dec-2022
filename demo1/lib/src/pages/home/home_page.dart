@@ -3,6 +3,7 @@ import 'package:demo1/src/bloc/login/login_bloc.dart';
 import 'package:demo1/src/constants/network_api.dart';
 import 'package:demo1/src/models/product.dart';
 import 'package:demo1/src/pages/app_routes.dart';
+import 'package:demo1/src/pages/home/widgets/product_item.dart';
 import 'package:demo1/src/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,7 +50,14 @@ class _HomePageState extends State<HomePage> {
   _buildListView(List<Product> products) {
     return ListView.builder(
       itemCount: products.length,
-      itemBuilder: (context, index) => Text(products[index].name),
+      itemBuilder: (context, index) => SizedBox(
+        height: 350,
+        child: ProductItem(
+          product: products[index],
+          onTap: () {},
+          isGrid: context.read<HomeBloc>().state.isGrid,
+        ),
+      ),
     );
   }
 

@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
       body: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
           final products = state.products;
-          return _buildGridView(products);
+          return state.isGrid ? _buildGridView(products) : _buildListView(products);
         },
       ),
     );

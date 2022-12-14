@@ -31,21 +31,31 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: FutureBuilder(
-        future: ApiService().feed(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData == false) {
-            return SizedBox();
-          }
-          final products = snapshot.data!;
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [...products.map((e) => Text(e.name))],
-          );
-        },
-      ),
+      body: _buildListView(),
     );
   }
+
+  _buildListView() {
+    return Text("ListView");
+  }
+
+  _buildDemoFutureBuilder() {
+    return FutureBuilder(
+      future: ApiService().feed(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData == false) {
+          return SizedBox();
+        }
+        final products = snapshot.data!;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [...products.map((e) => Text(e.name))],
+        );
+      },
+    );
+  }
+
+
 }
 
 class BlocCounter extends StatelessWidget {

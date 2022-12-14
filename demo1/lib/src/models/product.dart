@@ -12,7 +12,7 @@ class Product {
   Product({
     this.id,
     required this.name,
-    required this.image,
+    this.image,
     required this.stock,
     required this.price,
     this.createdAt,
@@ -21,7 +21,7 @@ class Product {
 
   int? id;
   String name;
-  String image;
+  String? image;
   int stock;
   int price;
   DateTime? createdAt;

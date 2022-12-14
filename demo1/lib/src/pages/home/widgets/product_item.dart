@@ -1,5 +1,3 @@
-
-
 import 'dart:io';
 
 import 'package:demo1/src/app.dart';

@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
         child: ProductItem(
           product: products[index],
           onTap: () {},
-          isGrid: context.read<HomeBloc>().state.isGrid,
+          isGrid: false,
         ),
       ),
     );
@@ -70,18 +70,10 @@ class _HomePageState extends State<HomePage> {
         mainAxisSpacing: 1,
         childAspectRatio: 0.9, // set height ratio -  (itemWidth / itemHeight)
       ),
-      itemBuilder: (context, index) => Container(
-        color: Colors.yellow,
-        child: Center(
-            child: Column(
-          children: [
-            Text(products[index].name),
-            SizedBox(
-              height: 150,
-              child: Image.network("${NetworkAPI.imageURL}/${products[index].image}"),
-            )
-          ],
-        )),
+      itemBuilder: (context, index) => ProductItem(
+        product: products[index],
+        onTap: () {},
+        isGrid: true,
       ),
     );
   }

@@ -10,7 +10,7 @@ class DialogScanQRCode extends StatefulWidget {
 
 class _DialogScanQRCodeState extends State<DialogScanQRCode> {
   final GlobalKey _qrKey = GlobalKey(debugLabel: 'QR');
-  String code = '';
+  String code = '12312341234';
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +20,14 @@ class _DialogScanQRCodeState extends State<DialogScanQRCode> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(code),
             SizedBox(height: 12),
             Stack(
-              alignment: Alignment.center,
               children: [
                 _buildQRView(),
+
+                Container(child: Text(code), color: Colors.white,),
+
+
                 Container(
                   height: 1,
                   width: double.infinity,

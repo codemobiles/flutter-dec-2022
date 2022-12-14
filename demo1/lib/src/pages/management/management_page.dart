@@ -29,11 +29,14 @@ class _ManagementPageState extends State<ManagementPage> {
           title: Text('ManagementPage'),
         ),
         body: ProductForm(
+          _product,
           callBackSetImage: _handleCallBackSetImage,
-
+          formKey: _form,
+          deleteProduct: _handleDeleteProduct,
         ));
   }
 
-  _handleCallBackSetImage() {
-  }
+  _handleCallBackSetImage() {}
+
+  _handleDeleteProduct() {}
 }

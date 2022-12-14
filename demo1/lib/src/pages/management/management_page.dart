@@ -26,6 +26,7 @@ class _ManagementPageState extends State<ManagementPage> {
 
     return Scaffold(
         appBar: AppBar(
+          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.add))],
           title: Text('ManagementPage'),
         ),
         body: Padding(

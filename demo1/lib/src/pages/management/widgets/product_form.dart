@@ -28,6 +28,7 @@ class ProductForm extends StatelessWidget {
           Row(
             children: <Widget>[
               Flexible(
+                flex: 2,
                 child: _buildPriceInput(),
               ),
               SizedBox(width: _spacing),

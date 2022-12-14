@@ -13,7 +13,7 @@ class ManagementPage extends StatefulWidget {
 
 class _ManagementPageState extends State<ManagementPage> {
   final _form = GlobalKey<FormState>();
-  var _product = Product(name: "productX", price: 10, stock: 20);
+  var _product = Product(name: "productX", price: 100, stock: 20);
   var _editMode = false;
   File? _imageFile;
 
@@ -28,11 +28,14 @@ class _ManagementPageState extends State<ManagementPage> {
         appBar: AppBar(
           title: Text('ManagementPage'),
         ),
-        body: ProductForm(
-          _product,
-          callBackSetImage: _handleCallBackSetImage,
-          formKey: _form,
-          deleteProduct: _handleDeleteProduct,
+        body: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: ProductForm(
+            _product,
+            callBackSetImage: _handleCallBackSetImage,
+            formKey: _form,
+            deleteProduct: _handleDeleteProduct,
+          ),
         ));
   }
 

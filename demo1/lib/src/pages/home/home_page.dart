@@ -36,7 +36,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   _buildListView() {
-    return Text("ListView");
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (context, item) => Text("1234"),
+    );
   }
 
   _buildDemoFutureBuilder() {
@@ -54,8 +57,6 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
-
-
 }
 
 class BlocCounter extends StatelessWidget {

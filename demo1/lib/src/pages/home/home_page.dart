@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    ApiService().feed();
+    context.read<HomeBloc>().add(HomeEvent_Fetch());
   }
 
   @override
@@ -31,7 +31,11 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: _buildListView(),
+      body: BlocBuilder<HomeBloc, HomeState>(
+        builder: (context, state) {
+          return _buildListView();
+        },
+      ),
     );
   }
 

@@ -7,6 +7,8 @@ import 'package:demo1/src/pages/home/widgets/product_item.dart';
 import 'package:demo1/src/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -144,32 +146,32 @@ class CustomDrawer extends StatelessWidget {
   }) : super(key: key);
 
   void _showDialogBarcode(context) {
-    showDialog<void>(
-      context: context,
-      barrierDismissible: true,
-      builder: (BuildContext dialogContext) => const DialogBarcodeImage(
-        'www.codemobiles.com',
-      ),
-    );
+    // showDialog<void>(
+    //   context: context,
+    //   barrierDismissible: true,
+    //   builder: (BuildContext dialogContext) => const DialogBarcodeImage(
+    //     'www.codemobiles.com',
+    //   ),
+    // );
   }
 
   void _showDialogQRImage(context) {
-    showDialog<void>(
-      context: context,
-      barrierDismissible: true,
-      builder: (BuildContext dialogContext) => const DialogQRImage(
-        'www.codemobiles.com',
-        image: Asset.pinBikerImage,
-      ),
-    );
+    // showDialog<void>(
+    //   context: context,
+    //   barrierDismissible: true,
+    //   builder: (BuildContext dialogContext) => const DialogQRImage(
+    //     'www.codemobiles.com',
+    //     image: Asset.pinBikerImage,
+    //   ),
+    // );
   }
 
   void _showScanQRCode(context) {
-    showDialog<void>(
-      context: context,
-      barrierDismissible: true,
-      builder: (BuildContext dialogContext) => DialogScanQRCode(),
-    );
+    // showDialog<void>(
+    //   context: context,
+    //   barrierDismissible: true,
+    //   builder: (BuildContext dialogContext) => DialogScanQRCode(),
+    // );
   }
 
   @override

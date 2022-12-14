@@ -1,9 +1,13 @@
 import 'package:demo1/src/app.dart';
 import 'package:demo1/src/bloc/home/home_bloc.dart';
 import 'package:demo1/src/bloc/login/login_bloc.dart';
+import 'package:demo1/src/constants/asset.dart';
 import 'package:demo1/src/constants/network_api.dart';
 import 'package:demo1/src/models/product.dart';
 import 'package:demo1/src/pages/app_routes.dart';
+import 'package:demo1/src/pages/home/widgets/dialog_barcode_image.dart';
+import 'package:demo1/src/pages/home/widgets/dialog_qr_image.dart';
+import 'package:demo1/src/pages/home/widgets/dialog_scan_qrcode.dart';
 import 'package:demo1/src/pages/home/widgets/product_item.dart';
 import 'package:demo1/src/services/api_service.dart';
 import 'package:flutter/material.dart';
@@ -144,32 +148,32 @@ class CustomDrawer extends StatelessWidget {
   }) : super(key: key);
 
   void _showDialogBarcode(context) {
-    // showDialog<void>(
-    //   context: context,
-    //   barrierDismissible: true,
-    //   builder: (BuildContext dialogContext) => const DialogBarcodeImage(
-    //     'www.codemobiles.com',
-    //   ),
-    // );
+    showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext dialogContext) => const DialogBarcodeImage(
+        'www.codemobiles.com',
+      ),
+    );
   }
 
   void _showDialogQRImage(context) {
-    // showDialog<void>(
-    //   context: context,
-    //   barrierDismissible: true,
-    //   builder: (BuildContext dialogContext) => const DialogQRImage(
-    //     'www.codemobiles.com',
-    //     image: Asset.pinBikerImage,
-    //   ),
-    // );
+    showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext dialogContext) => const DialogQRImage(
+        'www.codemobiles.com',
+        image: Asset.pinBikerImage,
+      ),
+    );
   }
 
   void _showScanQRCode(context) {
-    // showDialog<void>(
-    //   context: context,
-    //   barrierDismissible: true,
-    //   builder: (BuildContext dialogContext) => DialogScanQRCode(),
-    // );
+    showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext dialogContext) => DialogScanQRCode(),
+    );
   }
 
   _showDemoDialog() {

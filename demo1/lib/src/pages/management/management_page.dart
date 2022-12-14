@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:demo1/src/bloc/management/management_bloc.dart';
 import 'package:demo1/src/models/product.dart';
 import 'package:demo1/src/pages/management/widgets/product_form.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ManagementPage extends StatefulWidget {
   const ManagementPage({Key? key}) : super(key: key);
@@ -21,6 +23,7 @@ class _ManagementPageState extends State<ManagementPage> {
   Widget build(BuildContext context) {
     final Object? arguments = ModalRoute.of(context)?.settings.arguments;
     if (arguments != null && arguments is Product) {
+      _editMode = true;
       print(arguments.name);
     }
 
@@ -28,22 +31,16 @@ class _ManagementPageState extends State<ManagementPage> {
         appBar: AppBar(
           actions: [
             IconButton(
-                onPressed: () {
-                  showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return SizedBox(
-                          child: Column(
-                            children: [
-                              ListTile(leading: Icon(Icons.camera), title: Text("xxxx")),
-                              ListTile(leading: Icon(Icons.picture_as_pdf), title: Text("yyyy")),
-                            ],
-                          ),
-                          height: 150,
-                        );
-                      });
-                },
-                icon: Icon(Icons.add))
+              onPressed: () => context.read<ManagementBloc>().add(
+                    ManagementEvent_Submit(
+                      product: _product,
+                      form: _form,
+                      image: _imageFile,
+                      isEditMode: _editMode,
+                    ),
+                  ),
+              icon: Icon(Icons.upload),
+            ),
           ],
           title: Text('ManagementPage'),
         ),
@@ -61,4 +58,20 @@ class _ManagementPageState extends State<ManagementPage> {
   _handleCallBackSetImage() {}
 
   _handleDeleteProduct() {}
+
+  void _buildBottomSheetDemo() {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return SizedBox(
+            child: Column(
+              children: [
+                ListTile(leading: Icon(Icons.camera), title: Text("xxxx")),
+                ListTile(leading: Icon(Icons.picture_as_pdf), title: Text("yyyy")),
+              ],
+            ),
+            height: 150,
+          );
+        });
+  }
 }

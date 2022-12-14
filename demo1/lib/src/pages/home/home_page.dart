@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
         height: 350,
         child: ProductItem(
           product: products[index],
-          onTap: () {},
+          onTap: () =>_navigatorManagementPage(products[index]),
           isGrid: false,
         ),
       ),
@@ -79,9 +79,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void  _navigatorManagementPage(Product? product) {
-    Navigator.pushNamed(context, AppRoute.management, arguments: product).then(
-          (value) => setState(() {}),
-    );
+    Navigator.pushNamed(context, AppRoute.management, arguments: product);
   }
 
 

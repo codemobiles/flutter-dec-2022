@@ -37,7 +37,9 @@ class ProductForm extends StatelessWidget {
             ),
             ElevatedButton(onPressed: (){
               formState.currentState?.save();
-            }, child: Text("Submit"))
+            }, child: Text("Submit")),
+
+            OutlinedButton(onPressed: (){}, child: Text("Reset"))
           ],
         ),
       ),

@@ -174,10 +174,12 @@ class CustomDrawer extends StatelessWidget {
 
   _showDemoDialog() {
     showDialog(
+        barrierDismissible: false,
         context: navigatorState.currentContext!,
         builder: (context) {
           return Dialog(
               child: Container(
+            height: 300,
             color: Colors.white,
             child: Column(
               children: [

@@ -6,7 +6,14 @@ class ProductForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Form"),
+      child: Form(
+        child: Column(
+          children: [
+            Text("1234"),
+            Text("1234"),
+          ],
+        ),
+      ),
     );
   }
 }

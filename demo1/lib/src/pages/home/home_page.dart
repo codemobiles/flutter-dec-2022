@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
       body: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
           final products = state.products;
-          return _buildListView(products);
+          return _buildGridView(products);
         },
       ),
     );
@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
 
   _buildGridView(List<Product> products) {
     return GridView.builder(
+      itemCount: products.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 1,

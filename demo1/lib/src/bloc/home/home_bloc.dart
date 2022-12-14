@@ -38,6 +38,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     });
 
     // Toggle display mode (list and grid)
-    on<HomeEvent_toggleDisplay>((event, emit) {});
+    on<HomeEvent_toggleDisplay>((event, emit) {
+      emit(state.copyWith(isGrid: !state.isGrid));
+    });
   }
 }

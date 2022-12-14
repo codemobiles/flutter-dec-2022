@@ -136,3 +136,92 @@ class BlocCounter extends StatelessWidget {
     );
   }
 }
+
+
+class CustomDrawer extends StatelessWidget {
+  const CustomDrawer({
+    Key? key,
+  }) : super(key: key);
+
+  void _showDialogBarcode(context) {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext dialogContext) => const DialogBarcodeImage(
+        'www.codemobiles.com',
+      ),
+    );
+  }
+
+  void _showDialogQRImage(context) {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext dialogContext) => const DialogQRImage(
+        'www.codemobiles.com',
+        image: Asset.pinBikerImage,
+      ),
+    );
+  }
+
+  void _showScanQRCode(context) {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext dialogContext) => DialogScanQRCode(),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: Column(
+        children: [
+          _buildProfile(),
+          ListTile(
+            onTap: () => _showDialogBarcode(context),
+            title: Text("BarCode"),
+            leading: const FaIcon(FontAwesomeIcons.barcode, color: Colors.deepOrange),
+          ),
+          ListTile(
+            onTap: () => _showDialogQRImage(context),
+            title: Text("QRCode"),
+            leading: Icon(Icons.qr_code, color: Colors.green),
+          ),
+          ListTile(
+            onTap: () => _showScanQRCode(context),
+            title: Text("Scanner"),
+            leading: const Icon(Icons.qr_code_scanner, color: Colors.blueGrey),
+          ),
+          ListTile(
+            onTap: () => Navigator.pushNamed(context, AppRoute.map),
+            title: Text("Map"),
+            leading: Icon(Icons.map_outlined, color: Colors.blue),
+          ),
+          Spacer(),
+          _buildLogoutButton(),
+        ],
+      ),
+    );
+  }
+
+  UserAccountsDrawerHeader _buildProfile() => UserAccountsDrawerHeader(
+    currentAccountPicture: Container(
+      child: const CircleAvatar(
+        backgroundImage: NetworkImage('https://cdn-images-1.medium.com/max/280/1*X5PBTDQQ2Csztg3a6wofIQ@2x.png'),
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+      ),
+    ),
+    accountName: Text('CMDev'),
+    accountEmail: Text('support@codemobiles.com'),
+  );
+
+  Builder _buildLogoutButton() => Builder(
+    builder: (context) => SafeArea(
+      child: ListTile(leading: FaIcon(FontAwesomeIcons.signOutAlt), title: Text('Log out'), onTap: () => context.read<LoginBloc>().add(LoginEvent_Logout())),
+    ),
+  );
+}

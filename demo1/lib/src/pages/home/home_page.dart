@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _navigatorManagementPage(Product? product) {
+  void _navigatorManagementPage([Product? product]) {
     Navigator.pushNamed(context, AppRoute.management, arguments: product).then((value) {
       context.read<HomeBloc>().add(HomeEvent_Fetch());
     });

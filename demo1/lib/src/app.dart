@@ -6,7 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'pages/pages.dart';
+import 'package:intl/intl.dart';
 
+final formatCurrency = NumberFormat('#,###.000');
+final formatNumber = NumberFormat('#,###');
 final navigatorState = GlobalKey<NavigatorState>();
 
 class CMApp extends StatelessWidget {

@@ -27,8 +27,12 @@ class _HomePageState extends State<HomePage> {
         title: Text('HomePage'),
         actions: [
           IconButton(
-            onPressed: () => context.read<LoginBloc>().add(LoginEvent_Logout()),
-            icon: Icon(Icons.logout),
+            onPressed: () => context.read<HomeBloc>().add(HomeEvent_toggleDisplay()),
+            icon: BlocBuilder<HomeBloc, HomeState>(
+              builder: (context, state) {
+                return state.isGrid ? Icon(Icons.grid_3x3) : Icon(Icons.list);
+              },
+            ),
           )
         ],
       ),

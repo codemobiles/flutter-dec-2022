@@ -176,17 +176,20 @@ class CustomDrawer extends StatelessWidget {
     showDialog(
         context: navigatorState.currentContext!,
         builder: (context) {
-          return Container(
+          return Dialog(
+              child: Container(
             color: Colors.white,
             child: Column(
               children: [
                 Text("My Dialog"),
-                TextButton(onPressed: (){
-                  Navigator.pop(context);
-                }, child: Text("Close"))
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text("Close"))
               ],
             ),
-          );
+          ));
         });
   }
 

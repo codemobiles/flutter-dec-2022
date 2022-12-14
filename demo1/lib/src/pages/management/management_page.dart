@@ -26,7 +26,20 @@ class _ManagementPageState extends State<ManagementPage> {
 
     return Scaffold(
         appBar: AppBar(
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.add))],
+          actions: [
+            IconButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return SizedBox(
+                          child: Text("1234"),
+                          height: 100,
+                        );
+                      });
+                },
+                icon: Icon(Icons.add))
+          ],
           title: Text('ManagementPage'),
         ),
         body: Padding(

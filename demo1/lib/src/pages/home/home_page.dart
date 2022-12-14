@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(child: Center(child: Text("Menu"))),
       appBar: AppBar(
         title: Text('HomePage'),
         actions: [

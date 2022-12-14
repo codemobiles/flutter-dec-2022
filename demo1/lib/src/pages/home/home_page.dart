@@ -1,5 +1,6 @@
 import 'package:demo1/src/bloc/home/home_bloc.dart';
 import 'package:demo1/src/bloc/login/login_bloc.dart';
+import 'package:demo1/src/constants/network_api.dart';
 import 'package:demo1/src/models/product.dart';
 import 'package:demo1/src/pages/app_routes.dart';
 import 'package:demo1/src/services/api_service.dart';
@@ -63,7 +64,16 @@ class _HomePageState extends State<HomePage> {
       ),
       itemBuilder: (context, index) => Container(
         color: Colors.yellow,
-        child: Center(child: Text(products[index].name)),
+        child: Center(
+            child: Column(
+          children: [
+            Text(products[index].name),
+            SizedBox(
+              height: 150,
+              child: Image.network("${NetworkAPI.imageURL}/${products[index].image}"),
+            )
+          ],
+        )),
       ),
     );
   }

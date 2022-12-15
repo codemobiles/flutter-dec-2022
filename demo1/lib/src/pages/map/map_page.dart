@@ -39,6 +39,16 @@ class MapPageState extends State<MapPage> {
     // TODO: implement initState
     super.initState();
     _buildSingleMarker(position: LatLng(13.7462463, 100.5325515));
+    _buildPolygon();
+  }
+
+  void _buildPolygon() {
+    final polygon = Polygon(
+      polygonId: PolygonId("p1"),
+      strokeWidth: 2,
+      strokeColor: Colors.yellow,
+      fillColor: Colors.yellow.withOpacity(0.15),
+    );
   }
 
   @override
@@ -50,6 +60,7 @@ class MapPageState extends State<MapPage> {
           Header(),
           Expanded(
             child: GoogleMap(
+              polygons: _polygons,
               markers: _markers,
               onTap: (latLng) => _buildSingleMarker(position: latLng),
               mapType: MapType.normal,

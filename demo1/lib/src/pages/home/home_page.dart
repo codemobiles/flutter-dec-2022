@@ -66,6 +66,17 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  _buildHeader() {
+    return Container(
+        color: Colors.black87,
+        child: Image.asset(
+          Asset.logoImage,
+          height: 100,
+          width: double.infinity,
+        ));
+  }
+
+
   _buildListView(List<Product> products) {
     return ListView.builder(
       itemCount: products.length,

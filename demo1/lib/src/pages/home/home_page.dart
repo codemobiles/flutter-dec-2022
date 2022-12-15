@@ -54,7 +54,13 @@ class _HomePageState extends State<HomePage> {
       body: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
           final products = state.products;
-          return state.isGrid ? _buildGridView(products) : _buildListView(products);
+
+          return RefreshIndicator(
+            child: state.isGrid ? _buildGridView(products) : _buildListView(products),
+            onRefresh: () async {
+              context.read<HomeBloc>().add(HomeEvent_Fetch());
+            },
+          );
         },
       ),
     );

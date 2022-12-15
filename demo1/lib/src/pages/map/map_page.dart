@@ -6,6 +6,7 @@ import 'package:demo1/src/constants/asset.dart';
 import 'package:demo1/src/widgets/custom_flushbar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -68,7 +69,7 @@ class MapPageState extends State<MapPage> {
     }).toList();
 
     final meterArea = maptoolkit.SphericalUtil.computeArea(_mapToolkitLatLng);
-    final kmArea = formatCurrency.format(meterArea/(1000*2));
+    final kmArea = formatCurrency.format(meterArea / (1000 * 2));
     CustomFlushbar.showSuccess(navigatorState.currentContext!, message: "Area: $kmArea ²Km");
   }
 
@@ -244,5 +245,20 @@ class MapPageState extends State<MapPage> {
     }
 
 
+    try{
+      // Check avaliablity and permission service
+      final serviceEnabled = await _checkServiceGPS();
+      if (!serviceEnabled) {
+        throw PlatformException(code: 'SERVICE_STATUS_DENIED');
+      }
+
+      final permissionGranted = await _checkPermission();
+      if (!permissionGranted) {
+        throw PlatformException(code: 'PERMISSION_DENIED');
+      }
+
+    }on PlatformException catch(e){
+
+    }
   }
 }

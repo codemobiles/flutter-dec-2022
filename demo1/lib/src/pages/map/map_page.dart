@@ -102,7 +102,31 @@ class MapPageState extends State<MapPage> {
         ));
   }
 
-  void _zoomPolygon() {
+
+// Begin
+  Future<void> _addMarker(LatLng position) async {
+    final Uint8List markerIcon = await getBytesFromAsset(Asset.pinBikerImage, width: 150);
+    final BitmapDescriptor bitmap = BitmapDescriptor.fromBytes(markerIcon);
+
+    _markers.add(
+      Marker(
+        // important. unique id
+        markerId: MarkerId(position.toString()),
+        position: position,
+        infoWindow: InfoWindow(
+          // title: formatPosition(position),
+          snippet: "",
+          // onTap: () => _launchMaps(lat: position.latitude, lng: position.longitude),
+        ),
+        icon: bitmap,
+        onTap: () async {
+          //todo
+        },
+      ),
+    );
+  }
+
+  Future<void> _zoomPolygon() async {
     // Animate map to specific position
     // _controller.future.then(
     //   (controller) => controller.moveCamera(
@@ -110,10 +134,18 @@ class MapPageState extends State<MapPage> {
     //   ),
     // );
 
+    // place all polygon markers
+    for (var latLng in _dummyLatLng) {
+      await _addMarker(latLng);
+    }
+
     final bounds = _boundsFromLatLngList(_dummyLatLng);
     _controller.future.then(
-      (controller) => controller.moveCamera(CameraUpdate.newLatLngBounds(bounds, 100)),
+      (controller) => controller.moveCamera(CameraUpdate.newLatLngBounds(bounds, 50)),
     );
+
+    setState(() {
+    });
   }
 
   LatLngBounds _boundsFromLatLngList(List<LatLng> list) {

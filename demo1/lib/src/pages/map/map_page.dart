@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:demo1/src/app.dart';
 import 'package:demo1/src/constants/asset.dart';
+import 'package:demo1/src/widgets/custom_flushbar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -46,10 +47,27 @@ class MapPageState extends State<MapPage> {
   }
 
   void _buildPolygon() {
-    final polygon = Polygon(polygonId: PolygonId("p1"), strokeWidth: 2, strokeColor: Colors.yellow, fillColor: Colors.yellow.withOpacity(0.35), points: _dummyLatLng);
+    final polygon = Polygon(
+      polygonId: PolygonId("p1"),
+      strokeWidth: 2,
+      strokeColor: Colors.yellow,
+      onTap: _handleClickPolygon,
+      fillColor: Colors.yellow.withOpacity(0.35),
+      points: _dummyLatLng,
+    );
 
     _polygons.add(polygon);
     setState(() {});
+  }
+
+  void _handleClickPolygon() {
+    final _mapToolkitLatLng = _dummyLatLng.map((e) {
+      return maptoolkit.LatLng(e.latitude, e.longitude);
+    }).toList();
+
+    final meterArea = maptoolkit.SphericalUtil.computeArea(_mapToolkitLatLng);
+    final kmArea = formatCurrency.format(meterArea/(1000*2));
+    CustomFlushbar.showSuccess(navigatorState.currentContext!, message: "Area: $kmArea ²Km");
   }
 
   @override
@@ -105,13 +123,11 @@ class MapPageState extends State<MapPage> {
         ));
   }
 
-
   String formatPosition(LatLng pos) {
     final lat = formatCurrency.format(pos.latitude);
     final lng = formatCurrency.format(pos.longitude);
     return ": $lat, $lng";
   }
-
 
   void _launchMaps({required double lat, required double lng}) async {
     final parameter = '?z=16&q=$lat,$lng';
@@ -137,7 +153,6 @@ class MapPageState extends State<MapPage> {
     throw 'Could not launch url';
   }
 
-
 // Begin
   Future<void> _addMarker(LatLng position) async {
     final Uint8List markerIcon = await getBytesFromAsset(Asset.pinBikerImage, width: 150);
@@ -150,7 +165,7 @@ class MapPageState extends State<MapPage> {
         position: position,
         infoWindow: InfoWindow(
           title: formatPosition(position),
-          snippet: "",
+          snippet: "xxx",
           onTap: () => _launchMaps(lat: position.latitude, lng: position.longitude),
         ),
         icon: bitmap,
@@ -201,4 +216,6 @@ class MapPageState extends State<MapPage> {
       southwest: LatLng(x0!, y0!),
     );
   }
+
+
 }

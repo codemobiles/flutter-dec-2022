@@ -43,13 +43,7 @@ class MapPageState extends State<MapPage> {
   }
 
   void _buildPolygon() {
-    final polygon = Polygon(
-      polygonId: PolygonId("p1"),
-      strokeWidth: 2,
-      strokeColor: Colors.yellow,
-      fillColor: Colors.yellow.withOpacity(0.35),
-      points: _dummyLatLng
-    );
+    final polygon = Polygon(polygonId: PolygonId("p1"), strokeWidth: 2, strokeColor: Colors.yellow, fillColor: Colors.yellow.withOpacity(0.35), points: _dummyLatLng);
 
     _polygons.add(polygon);
     setState(() {});
@@ -58,12 +52,23 @@ class MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("MapPage"),
+        actions: [
+          IconButton(onPressed: (){
+
+          }, icon: Icon(Icons.zoom_in))
+        ],
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Header(),
           Expanded(
             child: GoogleMap(
+              onMapCreated: (controller) {
+                _controller.complete(controller);
+              },
               polygons: _polygons,
               markers: _markers,
               onTap: (latLng) => _buildSingleMarker(position: latLng),

@@ -39,9 +39,9 @@ class MapPageState extends State<MapPage> {
         children: [
           Header(),
           Expanded(
-            child: Container(
-                color: Colors.red,
-                child: Text("1234")),
+            child: GoogleMap(
+              initialCameraPosition: _initMap,
+            ),
           )
         ],
       ),

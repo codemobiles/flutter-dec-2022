@@ -270,7 +270,21 @@ class MapPageState extends State<MapPage> {
         _animateCamera(latLng);
         setState(() {});
       });
-    } on PlatformException catch (e) {}
+    } on PlatformException catch (e) {
+      switch (e.code) {
+        case 'PERMISSION_DENIED':
+        //todo
+          break;
+        case 'SERVICE_STATUS_ERROR':
+        //todo
+          break;
+        case 'SERVICE_STATUS_DENIED':
+        //todo
+          break;
+        default:
+        //todo
+      }
+    }
   }
 
   Future<bool> _checkPermission() async {

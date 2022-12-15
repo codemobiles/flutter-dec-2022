@@ -269,6 +269,7 @@ class MapPageState extends State<MapPage> {
         await _addMarker(latLng);
         _animateCamera(latLng);
         setState(() {});
+
       });
     } on PlatformException catch (e) {
       switch (e.code) {

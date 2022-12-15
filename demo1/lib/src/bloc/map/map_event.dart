@@ -8,6 +8,6 @@ abstract class MapEvent extends Equatable {
 }
 
 class MapEvent_SubmitLocation extends MapEvent{
-  final LatLng? position;
-  MapEvent_SubmitLocation({this.position});
+  final LatLng position;
+  MapEvent_SubmitLocation({required this.position});
 }

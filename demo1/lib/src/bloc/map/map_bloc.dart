@@ -12,7 +12,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
   MapBloc() : super(MapState(currentPosition: LatLng(13.7462463, 100.5325515))) {
 
     on<MapEvent_SubmitLocation>((event, emit) {
-
+        emit(state.copyWith(event.position));
     });
   }
 }

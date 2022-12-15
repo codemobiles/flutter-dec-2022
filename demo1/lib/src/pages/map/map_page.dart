@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:demo1/src/constants/asset.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
@@ -33,8 +34,22 @@ class MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text("Map"),
+      body: Column(children: [
+      Header()
+      ],),
     );
+  }
+
+
+
+  Header() {
+    return Container(
+        color: Colors.black87,
+        child: Image.asset(
+          Asset.logoImage,
+          height: 100,
+          width: double.infinity,
+        ));
   }
 
 }

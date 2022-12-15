@@ -290,4 +290,8 @@ class MapPageState extends State<MapPage> {
     serviceEnabled = await _locationService.requestService();
     return serviceEnabled;
   }
+
+  void _animateCamera(LatLng latLng) {
+    _controller.future.then((controller) => controller.animateCamera(CameraUpdate.newLatLngZoom(latLng, 16)));
+  }
 }

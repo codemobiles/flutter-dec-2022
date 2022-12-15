@@ -40,6 +40,8 @@ class MapPageState extends State<MapPage> {
           Header(),
           Expanded(
             child: GoogleMap(
+              onTap: (latLng) => _buildSingleMarker(position: latLng),
+              mapType: MapType.normal,
               initialCameraPosition: _initMap,
             ),
           )
@@ -47,6 +49,8 @@ class MapPageState extends State<MapPage> {
       ),
     );
   }
+
+  _buildSingleMarker({required LatLng position}) {}
 
   Header() {
     return Container(

@@ -261,4 +261,23 @@ class MapPageState extends State<MapPage> {
 
     }
   }
+
+
+  Future<bool> _checkPermission() async {
+    var permissionGranted = await _locationService.hasPermission();
+    if (permissionGranted == PermissionStatus.granted) {
+      return true;
+    }
+    permissionGranted = await _locationService.requestPermission();
+    return permissionGranted == PermissionStatus.granted;
+  }
+
+  Future<bool> _checkServiceGPS() async {
+    var serviceEnabled = await _locationService.serviceEnabled();
+    if (serviceEnabled) {
+      return true;
+    }
+    serviceEnabled = await _locationService.requestService();
+    return serviceEnabled;
+  }
 }

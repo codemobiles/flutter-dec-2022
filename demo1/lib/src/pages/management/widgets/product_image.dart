@@ -7,7 +7,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProductImage extends StatefulWidget {
-  final Function callBackSetImage;
+  final Function(File? file) callBackSetImage;
   final String? image;
 
   const ProductImage(

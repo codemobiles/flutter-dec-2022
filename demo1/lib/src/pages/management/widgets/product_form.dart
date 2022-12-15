@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:demo1/src/models/product.dart';
 import 'package:demo1/src/pages/management/widgets/product_image.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +7,7 @@ import 'package:flutter/material.dart';
 class ProductForm extends StatelessWidget {
   final _spacing = 8.0;
   final Product product;
-  final Function callBackSetImage;
+  final Function(File? file) callBackSetImage;
   final Function? deleteProduct;
   final GlobalKey<FormState> formKey;
 

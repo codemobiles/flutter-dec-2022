@@ -264,10 +264,12 @@ class MapPageState extends State<MapPage> {
       ); // meters.
 
       _locationSubscription = _locationService.onLocationChanged.listen((locationData) async {
-
+        _markers.clear();
+        final latLng = LatLng(locationData.latitude!, locationData.longitude!);
+        await _addMarker(latLng);
+        _animateCamera(latLng);
+        setState(() {});
       });
-
-
     } on PlatformException catch (e) {}
   }
 

@@ -235,7 +235,7 @@ class MapPageState extends State<MapPage> {
     );
   }
 
-  void _trackingLocation() {
+  void _trackingLocation() async {
     if (_locationSubscription != null) {
       _locationSubscription?.cancel();
       _locationSubscription = null;
@@ -244,8 +244,7 @@ class MapPageState extends State<MapPage> {
       return;
     }
 
-
-    try{
+    try {
       // Check avaliablity and permission service
       final serviceEnabled = await _checkServiceGPS();
       if (!serviceEnabled) {
@@ -257,11 +256,20 @@ class MapPageState extends State<MapPage> {
         throw PlatformException(code: 'PERMISSION_DENIED');
       }
 
-    }on PlatformException catch(e){
+      // condition to tracking
+      await _locationService.changeSettings(
+        accuracy: LocationAccuracy.high,
+        interval: 10000,
+        distanceFilter: 15,
+      ); // meters.
 
-    }
+      _locationSubscription = _locationService.onLocationChanged.listen((locationData) async {
+
+      });
+
+
+    } on PlatformException catch (e) {}
   }
-
 
   Future<bool> _checkPermission() async {
     var permissionGranted = await _locationService.hasPermission();

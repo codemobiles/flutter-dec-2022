@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:maps_toolkit/maps_toolkit.dart' as maptoolkit;
 
 import '../../services/common.dart';
 

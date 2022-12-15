@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:demo1/src/models/product.dart';
 import 'package:demo1/src/services/api_service.dart';
+import 'package:demo1/src/services/network_service.dart';
 import 'package:equatable/equatable.dart';
 
 part 'home_event.dart';
@@ -30,7 +31,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeEvent_Fetch>((event, emit) async {
       try{
         emit(state.copyWith(status: FetchStatus.fetching, products: []));
-        final result = await ApiService().feed();
+        // final result = await ApiService().feed();
+        final result = await NetworkService().getProduct();
         emit(state.copyWith(status: FetchStatus.success, products: result));
       }catch(e){
         emit(state.copyWith(status: FetchStatus.failed, products: []));

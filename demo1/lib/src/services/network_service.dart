@@ -10,9 +10,7 @@ import 'package:http_parser/http_parser.dart';
 // Singleton or Factory Design Pattern
 class NetworkService {
   NetworkService._internal();
-
   static final NetworkService _instance = NetworkService._internal();
-
   factory NetworkService() => _instance;
 
   static final Dio _dio = Dio()

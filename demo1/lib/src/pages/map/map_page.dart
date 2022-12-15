@@ -103,7 +103,6 @@ class MapPageState extends State<MapPage> {
   }
 
   void _zoomPolygon() {
-
     // Animate map to specific position
     // _controller.future.then(
     //   (controller) => controller.moveCamera(
@@ -111,9 +110,10 @@ class MapPageState extends State<MapPage> {
     //   ),
     // );
 
-
-
-
+    final bounds = _boundsFromLatLngList(_dummyLatLng);
+    _controller.future.then(
+      (controller) => controller.moveCamera(CameraUpdate.newLatLngBounds(bounds, 100)),
+    );
   }
 
   LatLngBounds _boundsFromLatLngList(List<LatLng> list) {

@@ -80,10 +80,20 @@ class _HomePageState extends State<HomePage> {
     return ListView.builder(
       itemCount: products.length,
       itemBuilder: (context, index) {
-        if (index == 0){
-
-
-
+        if (index == 0) {
+          return Column(
+            children: [
+              _buildHeader(),
+              SizedBox(
+                height: 350,
+                child: ProductItem(
+                  product: products[index],
+                  onTap: () => _navigatorManagementPage(products[index]),
+                  isGrid: false,
+                ),
+              )
+            ],
+          );
         }
 
         return SizedBox(

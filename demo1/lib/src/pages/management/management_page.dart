@@ -56,7 +56,9 @@ class _ManagementPageState extends State<ManagementPage> {
         ));
   }
 
-  _handleCallBackSetImage() {}
+  _handleCallBackSetImage(File? imageFile) {
+
+  }
 
   _handleDeleteProduct() {}
 

@@ -1,10 +1,13 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:demo1/src/app.dart';
 import 'package:demo1/src/constants/asset.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../services/common.dart';
 
@@ -103,6 +106,38 @@ class MapPageState extends State<MapPage> {
   }
 
 
+  String formatPosition(LatLng pos) {
+    final lat = formatCurrency.format(pos.latitude);
+    final lng = formatCurrency.format(pos.longitude);
+    return ": $lat, $lng";
+  }
+
+
+  void _launchMaps({required double lat, required double lng}) async {
+    final parameter = '?z=16&q=$lat,$lng';
+
+    if (Platform.isIOS) {
+      final googleMap = Uri.parse('comgooglemaps://' + parameter);
+      final appleMap = Uri.parse('https://maps.apple.com/' + parameter);
+      if (await canLaunchUrl(googleMap)) {
+        await launchUrl(googleMap);
+        return;
+      }
+      if (await canLaunchUrl(appleMap)) {
+        await launchUrl(appleMap);
+        return;
+      }
+    } else {
+      final googleMapURL = Uri.parse('https://maps.google.com/' + parameter);
+      if (await canLaunchUrl(googleMapURL)) {
+        await launchUrl(googleMapURL);
+        return;
+      }
+    }
+    throw 'Could not launch url';
+  }
+
+
 // Begin
   Future<void> _addMarker(LatLng position) async {
     final Uint8List markerIcon = await getBytesFromAsset(Asset.pinBikerImage, width: 150);
@@ -114,9 +149,9 @@ class MapPageState extends State<MapPage> {
         markerId: MarkerId(position.toString()),
         position: position,
         infoWindow: InfoWindow(
-          // title: formatPosition(position),
+          title: formatPosition(position),
           snippet: "",
-          // onTap: () => _launchMaps(lat: position.latitude, lng: position.longitude),
+          onTap: () => _launchMaps(lat: position.latitude, lng: position.longitude),
         ),
         icon: bitmap,
         onTap: () async {
@@ -144,8 +179,8 @@ class MapPageState extends State<MapPage> {
       (controller) => controller.moveCamera(CameraUpdate.newLatLngBounds(bounds, 50)),
     );
 
-    setState(() {
-    });
+    // refresh
+    setState(() {});
   }
 
   LatLngBounds _boundsFromLatLngList(List<LatLng> list) {

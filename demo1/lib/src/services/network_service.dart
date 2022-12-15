@@ -10,7 +10,9 @@ import 'package:http_parser/http_parser.dart';
 // Singleton or Factory Design Pattern
 class NetworkService {
   NetworkService._internal();
+
   static final NetworkService _instance = NetworkService._internal();
+
   factory NetworkService() => _instance;
 
   static final Dio _dio = Dio()
@@ -65,8 +67,7 @@ class NetworkService {
         ),
     });
 
-    final response =
-        await _dio.put('${NetworkAPI.product}/${product.id}', data: data);
+    final response = await _dio.put('${NetworkAPI.product}/${product.id}', data: data);
     if (response.statusCode == 200) {
       return 'Edit Successfully';
     }
@@ -99,17 +100,17 @@ class NetworkService {
     };
 
     Response response = await Dio().post(
-      "http://192.168.1.224:1150/submit_location",
-      options:
-          Options(headers: {HttpHeaders.contentTypeHeader: "application/json"}),
+      "http://192.168.0.178:1151/submit_location",
+      options: Options(
+        headers: {HttpHeaders.contentTypeHeader: "application/json"},
+      ),
       data: jsonEncode(params),
     );
 
     if (response.statusCode == 201) {
       return 'Submit Successfully';
-    }else{
+    } else {
       return 'Submit Failed';
     }
-
   }
 }

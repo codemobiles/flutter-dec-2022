@@ -13,6 +13,8 @@ class MapBloc extends Bloc<MapEvent, MapState> {
 
     on<MapEvent_SubmitLocation>((event, emit) {
         emit(state.copyWith(event.position));
+
+
     });
   }
 }

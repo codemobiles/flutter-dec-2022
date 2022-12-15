@@ -13,6 +13,6 @@ app.post("/submit_location", (req, res)=>{
     res.json({result: "ok", positions})
 })
 
-app.listen(1150,()=>{
-    console.log("Server is running...")
+app.listen(1151,()=>{
+    console.log("Server is running... on Port 1151")
 });

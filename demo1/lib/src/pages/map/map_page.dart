@@ -34,13 +34,13 @@ class MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
-      Header()
-      ],),
+      body: Column(
+        children: [
+          Header(),
+        ],
+      ),
     );
   }
-
-
 
   Header() {
     return Container(
@@ -51,5 +51,4 @@ class MapPageState extends State<MapPage> {
           width: double.infinity,
         ));
   }
-
 }

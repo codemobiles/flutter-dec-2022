@@ -47,8 +47,12 @@ class MapPageState extends State<MapPage> {
       polygonId: PolygonId("p1"),
       strokeWidth: 2,
       strokeColor: Colors.yellow,
-      fillColor: Colors.yellow.withOpacity(0.15),
+      fillColor: Colors.yellow.withOpacity(0.35),
+      points: _dummyLatLng
     );
+
+    _polygons.add(polygon);
+    setState(() {});
   }
 
   @override

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:demo1/src/bloc/home/home_bloc.dart';
 import 'package:demo1/src/bloc/management/management_bloc.dart';
 import 'package:demo1/src/models/product.dart';
 import 'package:demo1/src/pages/management/widgets/product_form.dart';
@@ -60,7 +61,9 @@ class _ManagementPageState extends State<ManagementPage> {
     _imageFile = file;
   }
 
-  _handleDeleteProduct() {}
+  _handleDeleteProduct() {
+    context.read<ManagementBloc>().add(ManagementEvent_Delete(_product.id!));
+  }
 
   void _buildBottomSheetDemo() {
     showModalBottomSheet(

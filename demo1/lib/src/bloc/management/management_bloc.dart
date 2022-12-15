@@ -45,7 +45,7 @@ class ManagementBloc extends Bloc<ManagementEvent, ManagementState> {
         emit(state.copyWith(status: SubmitStatus.success));
 
         // Re-fetch product.
-        navigatorState.currentContext!.read<HomeBloc>().add(HomeEvent_Fetch());
+        // navigatorState.currentContext!.read<HomeBloc>().add(HomeEvent_Fetch());
         CustomFlushbar.showSuccess(navigatorState.currentContext!, message: result);
       } catch (exception) {
         CustomFlushbar.showError(navigatorState.currentContext!, message: 'network fail');

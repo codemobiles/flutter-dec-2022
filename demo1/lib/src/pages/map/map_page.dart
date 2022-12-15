@@ -103,10 +103,35 @@ class MapPageState extends State<MapPage> {
   }
 
   void _zoomPolygon() {
-    _controller.future.then(
-      (controller) => controller.moveCamera(
-        CameraUpdate.newLatLngZoom(_initMap.target, 17),
-      ),
+
+    // Animate map to specific position
+    // _controller.future.then(
+    //   (controller) => controller.moveCamera(
+    //     CameraUpdate.newLatLngZoom(_initMap.target, 17),
+    //   ),
+    // );
+
+
+
+
+  }
+
+  LatLngBounds _boundsFromLatLngList(List<LatLng> list) {
+    double? x0, x1, y0, y1 = 0;
+    for (LatLng latLng in list) {
+      if (x0 == null) {
+        x0 = x1 = latLng.latitude;
+        y0 = y1 = latLng.longitude;
+      } else {
+        if (latLng.latitude > x1!) x1 = latLng.latitude;
+        if (latLng.latitude < x0) x0 = latLng.latitude;
+        if (latLng.longitude > y1!) y1 = latLng.longitude;
+        if (latLng.longitude < y0!) y0 = latLng.longitude;
+      }
+    }
+    return LatLngBounds(
+      northeast: LatLng(x1!, y1!),
+      southwest: LatLng(x0!, y0!),
     );
   }
 }

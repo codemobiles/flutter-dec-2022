@@ -5,6 +5,10 @@ class MapState extends Equatable {
 
   final LatLng currentPosition;
 
+  MapState copyWith(LatLng newPosition){
+    return MapState(currentPosition: newPosition);
+}
+
   @override
   List<Object> get props => [currentPosition];
 }

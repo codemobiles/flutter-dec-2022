@@ -57,7 +57,7 @@ class ManagementBloc extends Bloc<ManagementEvent, ManagementState> {
       NetworkService().deleteProduct(event.productId).then((value) {
         Navigator.pop(navigatorState.currentContext!);
         CustomFlushbar.showSuccess(navigatorState.currentContext!, message: value);
-        navigatorState.currentContext!.read<HomeBloc>().add(HomeEvent_Fetch());
+        // navigatorState.currentContext!.read<HomeBloc>().add(HomeEvent_Fetch());
       }).catchError((exception) {
         CustomFlushbar.showError(navigatorState.currentContext!, message: 'Delete fail');
       });

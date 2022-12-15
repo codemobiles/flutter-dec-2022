@@ -46,13 +46,15 @@ class _ManagementPageState extends State<ManagementPage> {
           ],
           title: Text('ManagementPage'),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: ProductForm(
-            _product,
-            callBackSetImage: _handleCallBackSetImage,
-            formKey: _form,
-            deleteProduct: _handleDeleteProduct,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: ProductForm(
+              _product,
+              callBackSetImage: _handleCallBackSetImage,
+              formKey: _form,
+              deleteProduct: _handleDeleteProduct,
+            ),
           ),
         ));
   }

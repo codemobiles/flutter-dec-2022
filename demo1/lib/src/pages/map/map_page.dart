@@ -79,6 +79,7 @@ class MapPageState extends State<MapPage> {
         title: Text("MapPage"),
         actions: [IconButton(onPressed: _zoomPolygon, icon: Icon(Icons.zoom_in))],
       ),
+      floatingActionButton: _buildTrackingButton(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -216,6 +217,18 @@ class MapPageState extends State<MapPage> {
     return LatLngBounds(
       northeast: LatLng(x1!, y1!),
       southwest: LatLng(x0!, y0!),
+    );
+  }
+
+  _buildTrackingButton() {
+    return Padding(
+      padding: const EdgeInsets.only(right: 50.0),
+      child: FloatingActionButton.extended(
+        onPressed: (){},
+        label: Text("xxx"),
+        backgroundColor: true ? Colors.red : Colors.blue,
+        icon: Icon(true ? Icons.stop : Icons.play_arrow),
+      ),
     );
   }
 

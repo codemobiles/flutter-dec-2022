@@ -35,6 +35,13 @@ class MapPageState extends State<MapPage> {
   ];
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _buildSingleMarker(position: LatLng(13.7462463, 100.5325515));
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(

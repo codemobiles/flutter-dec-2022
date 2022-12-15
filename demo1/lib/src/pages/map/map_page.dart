@@ -35,8 +35,14 @@ class MapPageState extends State<MapPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Header(),
+          Expanded(
+            child: Container(
+                color: Colors.red,
+                child: Text("1234")),
+          )
         ],
       ),
     );

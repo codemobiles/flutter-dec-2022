@@ -54,11 +54,7 @@ class MapPageState extends State<MapPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("MapPage"),
-        actions: [
-          IconButton(onPressed: (){
-
-          }, icon: Icon(Icons.zoom_in))
-        ],
+        actions: [IconButton(onPressed: _zoomPolygon, icon: Icon(Icons.zoom_in))],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -104,5 +100,13 @@ class MapPageState extends State<MapPage> {
           height: 100,
           width: double.infinity,
         ));
+  }
+
+  void _zoomPolygon() {
+    _controller.future.then(
+      (controller) => controller.moveCamera(
+        CameraUpdate.newLatLngZoom(_initMap.target, 17),
+      ),
+    );
   }
 }

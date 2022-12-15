@@ -1,9 +1,12 @@
 import 'dart:async';
 
 import 'package:demo1/src/constants/asset.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+
+import '../../services/common.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({Key? key}) : super(key: key);
@@ -51,11 +54,15 @@ class MapPageState extends State<MapPage> {
     );
   }
 
-  _buildSingleMarker({required LatLng position}) {
+  _buildSingleMarker({required LatLng position}) async {
+    final Uint8List markerIcon = await getBytesFromAsset(Asset.pinBikerImage, width: 150);
+    final BitmapDescriptor bitmap = BitmapDescriptor.fromBytes(markerIcon);
+
     _markers.add(
       Marker(
+        icon: bitmap,
         markerId: MarkerId(position.toString()),
-        position: position
+        position: position,
       ),
     );
 

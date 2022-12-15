@@ -76,18 +76,25 @@ class _HomePageState extends State<HomePage> {
         ));
   }
 
-
   _buildListView(List<Product> products) {
     return ListView.builder(
       itemCount: products.length,
-      itemBuilder: (context, index) => SizedBox(
-        height: 350,
-        child: ProductItem(
-          product: products[index],
-          onTap: () => _navigatorManagementPage(products[index]),
-          isGrid: false,
-        ),
-      ),
+      itemBuilder: (context, index) {
+        if (index == 0){
+
+
+
+        }
+
+        return SizedBox(
+          height: 350,
+          child: ProductItem(
+            product: products[index],
+            onTap: () => _navigatorManagementPage(products[index]),
+            isGrid: false,
+          ),
+        );
+      },
     );
   }
 

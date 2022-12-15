@@ -2,11 +2,13 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:demo1/src/app.dart';
+import 'package:demo1/src/bloc/map/map_bloc.dart';
 import 'package:demo1/src/constants/asset.dart';
 import 'package:demo1/src/widgets/custom_flushbar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -195,7 +197,7 @@ class MapPageState extends State<MapPage> {
 
     final bounds = _boundsFromLatLngList(_dummyLatLng);
     _controller.future.then(
-      (controller) => controller.moveCamera(CameraUpdate.newLatLngBounds(bounds, 50)),
+          (controller) => controller.moveCamera(CameraUpdate.newLatLngBounds(bounds, 50)),
     );
 
     // refresh
@@ -203,7 +205,10 @@ class MapPageState extends State<MapPage> {
   }
 
   LatLngBounds _boundsFromLatLngList(List<LatLng> list) {
-    double? x0, x1, y0, y1 = 0;
+    double? x0,
+        x1,
+        y0,
+        y1 = 0;
     for (LatLng latLng in list) {
       if (x0 == null) {
         x0 = x1 = latLng.latitude;
@@ -228,7 +233,11 @@ class MapPageState extends State<MapPage> {
       padding: const EdgeInsets.only(right: 50.0),
       child: FloatingActionButton.extended(
         onPressed: _trackingLocation,
-        label: Text("xxx"),
+        label: BlocBuilder<MapBloc, MapState>(
+          builder: (context, state) {
+            return Text(isTracking ? 'Stop Tracking ${formatPosition(state.currentPosition)}' : 'Start Tracking');
+          },
+        ),
         backgroundColor: isTracking ? Colors.red : Colors.blue,
         icon: Icon(isTracking ? Icons.stop : Icons.play_arrow),
       ),
@@ -270,6 +279,7 @@ class MapPageState extends State<MapPage> {
         _animateCamera(latLng);
         setState(() {});
 
+        context.read<MapBloc>().add(MapEvent_SubmitLocation(position: latLng));
       });
     } on PlatformException catch (e) {
       switch (e.code) {

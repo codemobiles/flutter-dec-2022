@@ -226,7 +226,7 @@ class MapPageState extends State<MapPage> {
     return Padding(
       padding: const EdgeInsets.only(right: 50.0),
       child: FloatingActionButton.extended(
-        onPressed: (){},
+        onPressed: _trackingLocation,
         label: Text("xxx"),
         backgroundColor: isTracking ? Colors.red : Colors.blue,
         icon: Icon(isTracking ? Icons.stop : Icons.play_arrow),
@@ -234,5 +234,15 @@ class MapPageState extends State<MapPage> {
     );
   }
 
+  void _trackingLocation() {
+    if (_locationSubscription != null) {
+      _locationSubscription?.cancel();
+      _locationSubscription = null;
+      _markers.clear();
+      setState(() {});
+      return;
+    }
 
+
+  }
 }

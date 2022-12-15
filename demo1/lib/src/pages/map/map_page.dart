@@ -51,6 +51,7 @@ class MapPageState extends State<MapPage> {
     final polygon = Polygon(
       polygonId: PolygonId("p1"),
       strokeWidth: 2,
+      consumeTapEvents: true,
       strokeColor: Colors.yellow,
       onTap: _handleClickPolygon,
       fillColor: Colors.yellow.withOpacity(0.35),

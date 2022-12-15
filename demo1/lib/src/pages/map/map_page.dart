@@ -221,13 +221,15 @@ class MapPageState extends State<MapPage> {
   }
 
   _buildTrackingButton() {
+    final isTracking = _locationSubscription != null;
+
     return Padding(
       padding: const EdgeInsets.only(right: 50.0),
       child: FloatingActionButton.extended(
         onPressed: (){},
         label: Text("xxx"),
-        backgroundColor: true ? Colors.red : Colors.blue,
-        icon: Icon(true ? Icons.stop : Icons.play_arrow),
+        backgroundColor: isTracking ? Colors.red : Colors.blue,
+        icon: Icon(isTracking ? Icons.stop : Icons.play_arrow),
       ),
     );
   }

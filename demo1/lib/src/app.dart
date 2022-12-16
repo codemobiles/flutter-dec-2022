@@ -7,6 +7,7 @@ import 'package:demo1/src/pages/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'pages/loading/loading_page.dart';
 import 'pages/pages.dart';
 import 'package:intl/intl.dart';
 

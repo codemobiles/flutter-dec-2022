@@ -1,4 +1,4 @@
-package com.codemobiles.flutter.demo1
+package com.codemobiles.cmdev.app
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.codemobiles.flutter.demo1">
+    package="com.codemobiles.cmdev.app">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
 
-       <!-- https://pub.dev/packages/image_cropper-->
+       
        <activity
            android:name="com.yalantis.ucrop.UCropActivity"
            android:screenOrientation="portrait"

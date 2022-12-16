@@ -22,7 +22,8 @@ class CMApp extends StatelessWidget {
     // Provider vs Builder
     final loginBloc = BlocProvider<LoginBloc>(create: (context) => LoginBloc());
     final homeBloc = BlocProvider<HomeBloc>(create: (context) => HomeBloc());
-    final managementBloc = BlocProvider<ManagementBloc>(create: (context) => ManagementBloc());
+    final managementBloc =
+        BlocProvider<ManagementBloc>(create: (context) => ManagementBloc());
     final mapBloc = BlocProvider<MapBloc>(create: (context) => MapBloc());
 
     return MultiBlocProvider(
@@ -42,13 +43,9 @@ class CMApp extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasData == false) {
           // Loading Page
-          return Center(
-              child: Text(
-            "Loading",
-            style: TextStyle(color: Colors.white),
-          ));
+          return LoadingPage();
         }
-        
+
         final token = snapshot.data!.getString(AppSetting.token) ?? "";
         return token.isEmpty ? LoginPage() : HomePage();
       },

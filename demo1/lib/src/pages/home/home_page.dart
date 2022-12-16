@@ -29,6 +29,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     context.read<HomeBloc>().add(HomeEvent_Fetch());
+    setupNotification();
   }
 
   late FirebaseMessaging messaging;
@@ -40,8 +41,7 @@ class _HomePageState extends State<HomePage> {
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage event) {
-      print("message recieved");
-      print(event.notification!.body);
+      print("message recieved: ${event.notification!.body}");
       showDialog(
           context: context,
           builder: (BuildContext context) {

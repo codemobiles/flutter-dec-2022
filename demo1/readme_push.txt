@@ -46,6 +46,7 @@ flutter pub add firebase_messaging
     super.initState();
   }
 
+  late FirebaseMessaging messaging;
   void setupNotification(){
     messaging = FirebaseMessaging.instance;
     messaging.getToken().then((value){

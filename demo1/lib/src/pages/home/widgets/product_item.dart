@@ -58,7 +58,9 @@ class ProductItem extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           height: height,
-          child: image != null && image.isNotEmpty ? _image(image) : ImageNotFound(),
+          child: image != null && image.isNotEmpty
+              ? _image(image)
+              : ImageNotFound(),
         ),
         if (stock <= 0) _buildOutOfStock(),
       ],
@@ -74,7 +76,9 @@ class ProductItem extends StatelessWidget {
             children: [
               Text(
                 product.name,
-                style: (isGrid ?? false) ? TextStyle(fontSize: 14, fontWeight: FontWeight.normal) : TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: (isGrid ?? false)
+                    ? TextStyle(fontSize: 14, fontWeight: FontWeight.normal)
+                    : TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -84,14 +88,14 @@ class ProductItem extends StatelessWidget {
                   Text(
                     '฿${formatCurrency.format(product.price)}',
                     style: TextStyle(
-                      fontSize: isGrid ?? false ? (Platform.isIOS ? 15 : 17) : 18,
+                      fontSize: isGrid ?? false ? 15 : 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    '${formatNumber.format(product.stock)} pieces',
+                    '${formatNumber.format(product.stock)} pcs.',
                     style: TextStyle(
-                      fontSize: isGrid ?? false ? (Platform.isIOS ? 15 : 17) : 18,
+                      fontSize: isGrid ?? false ? 15 : 16,
                       fontWeight: FontWeight.bold,
                       color: Colors.deepOrangeAccent,
                     ),

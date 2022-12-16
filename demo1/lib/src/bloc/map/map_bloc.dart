@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:demo1/src/services/network_service.dart';
 import 'package:equatable/equatable.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -13,8 +14,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
 
     on<MapEvent_SubmitLocation>((event, emit) {
         emit(state.copyWith(event.position));
-
-
+        NetworkService().submitLocation(event.position);
     });
   }
 }

@@ -42,7 +42,8 @@ class _HomePageState extends State<HomePage> {
         title: Text('HomePage'),
         actions: [
           IconButton(
-            onPressed: () => context.read<HomeBloc>().add(HomeEvent_toggleDisplay()),
+            onPressed: () =>
+                context.read<HomeBloc>().add(HomeEvent_toggleDisplay()),
             icon: BlocBuilder<HomeBloc, HomeState>(
               builder: (context, state) {
                 return state.isGrid ? Icon(Icons.grid_3x3) : Icon(Icons.list);
@@ -56,7 +57,9 @@ class _HomePageState extends State<HomePage> {
           final products = state.products;
 
           return RefreshIndicator(
-            child: state.isGrid ? _buildGridView(products) : _buildListView(products),
+            child: state.isGrid
+                ? _buildGridView(products)
+                : _buildListView(products),
             onRefresh: () async {
               context.read<HomeBloc>().add(HomeEvent_Fetch());
             },
@@ -126,7 +129,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _navigatorManagementPage([Product? product]) {
-    Navigator.pushNamed(context, AppRoute.management, arguments: product).then((value) {
+    Navigator.pushNamed(context, AppRoute.management, arguments: product)
+        .then((value) {
       context.read<HomeBloc>().add(HomeEvent_Fetch());
     });
   }
@@ -254,13 +258,14 @@ class CustomDrawer extends StatelessWidget {
           _buildProfile(),
           ListTile(
             leading: Icon(Icons.add),
-            title: Text("Menu1"),
+            title: Text("MenuX"),
             onTap: () => _showDemoDialog(),
           ),
           ListTile(
             onTap: () => _showDialogBarcode(context),
             title: Text("BarCode"),
-            leading: const FaIcon(FontAwesomeIcons.barcode, color: Colors.deepOrange),
+            leading: const FaIcon(FontAwesomeIcons.barcode,
+                color: Colors.deepOrange),
           ),
           ListTile(
             onTap: () => _showDialogQRImage(context),
@@ -287,7 +292,8 @@ class CustomDrawer extends StatelessWidget {
   UserAccountsDrawerHeader _buildProfile() => UserAccountsDrawerHeader(
         currentAccountPicture: Container(
           child: const CircleAvatar(
-            backgroundImage: NetworkImage('https://cdn-images-1.medium.com/max/280/1*X5PBTDQQ2Csztg3a6wofIQ@2x.png'),
+            backgroundImage: NetworkImage(
+                'https://cdn-images-1.medium.com/max/280/1*X5PBTDQQ2Csztg3a6wofIQ@2x.png'),
           ),
           decoration: BoxDecoration(
             color: Colors.white,

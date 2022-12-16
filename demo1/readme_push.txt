@@ -51,7 +51,7 @@ flutter pub add firebase_messaging
     messaging = FirebaseMessaging.instance;
     messaging.getToken().then((value){
       // print("Push Token: " + value.toString());
-      loggerNoStack.i("Push Token: " + value.toString());
+      print("Push Token: " + value.toString());
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage event) {

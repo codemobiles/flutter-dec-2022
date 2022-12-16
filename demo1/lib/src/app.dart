@@ -4,8 +4,10 @@ import 'package:demo1/src/bloc/management/management_bloc.dart';
 import 'package:demo1/src/bloc/map/map_bloc.dart';
 import 'package:demo1/src/constants/app_setting.dart';
 import 'package:demo1/src/pages/app_routes.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'pages/loading/loading_page.dart';
 import 'pages/pages.dart';
@@ -15,11 +17,24 @@ final formatCurrency = NumberFormat('#,###.000');
 final formatNumber = NumberFormat('#,###');
 final navigatorState = GlobalKey<NavigatorState>();
 
+final logger = Logger(
+  printer: PrettyPrinter(
+    methodCount: 1,
+    colors: true,
+  ),
+);
+
 class CMApp extends StatelessWidget {
   const CMApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    if (kReleaseMode) {
+      Logger.level = Level.nothing;
+    } else {
+      Logger.level = Level.debug;
+    }
+
     // Provider vs Builder
     final loginBloc = BlocProvider<LoginBloc>(create: (context) => LoginBloc());
     final homeBloc = BlocProvider<HomeBloc>(create: (context) => HomeBloc());

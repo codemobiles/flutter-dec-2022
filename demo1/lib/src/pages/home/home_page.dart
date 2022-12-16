@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage event) {
-      print("message recieved: ${event.notification!.body}");
+      print("message recieved: ${event.notification}");
       showDialog(
           context: context,
           builder: (BuildContext context) {

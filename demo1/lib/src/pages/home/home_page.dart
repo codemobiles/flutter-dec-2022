@@ -11,6 +11,7 @@ import 'package:demo1/src/pages/home/widgets/dialog_qr_image.dart';
 import 'package:demo1/src/pages/home/widgets/dialog_scan_qrcode.dart';
 import 'package:demo1/src/pages/home/widgets/product_item.dart';
 import 'package:demo1/src/services/api_service.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
     messaging = FirebaseMessaging.instance;
     messaging.getToken().then((value) {
       // print("Push Token: " + value.toString());
-      loggerNoStack.i("Push Token: " + value.toString());
+      print("Push Token: " + value.toString());
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage event) {
